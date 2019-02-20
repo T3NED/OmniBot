@@ -6,7 +6,7 @@
 </a>
 
 <a href="https://github.com/Omni-Discord-Bot/Omni">
-    <img src="https://img.shields.io/travis/Omni-Discord-Bot/Omni.svg?style=for-the-badge" alt="Travis Build">
+    <img src="https://img.shields.io/travis/com/Omni-Discord-Bot/OmniBot.svg?style=for-the-badge" alt="Travis Build">
 </a>
 
 <a href="https://github.com/Omni-Discord-Bot/Omni">
