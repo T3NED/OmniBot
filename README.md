@@ -1,7 +1,9 @@
 <div align="center">
     <img src="https://media.discordapp.net/attachments/509385945405980683/547800381565042708/coollogo_com-146841357.png" align="center">
 <br>
+<br>
 <strong><i>Omni-Multifunctional Bot</i></strong>
+<br>
 <br>
 <a href="https://discord.gg/xeaFzG2">
     <img src="https://img.shields.io/discord/496584856084545537.svg?colorB=Blue&logo=discord&label=Support&style=for-the-badge" alt="Support">
