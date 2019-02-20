@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="F:\Phunt\Github\OmniBot\assets\omnibot.ico" align="center">
+    <!-- <img src="F:\Phunt\Github\OmniBot\assets\omnibot.ico" align="center"> -->
 
 <a href="https://discord.gg/xeaFzG2">
     <img src="https://img.shields.io/discord/496584856084545537.svg?colorB=Blue&logo=discord&label=Support&style=for-the-badge" alt="Support">

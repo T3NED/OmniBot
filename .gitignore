@@ -65,6 +65,3 @@ config.json
 
 # yarn lock
 yarn.lock
-
-#Test
-assets/
