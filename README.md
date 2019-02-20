@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://media.discordapp.net/attachments/509385945405980683/547800381565042708/coollogo_com-146841357.png" align="center">
+    <img src="https://cdn.discordapp.com/attachments/509385945405980683/547806345999417354/coollogo_com-29429781.png" align="center">
 <br>
 <br>
 <strong><i>Omni-Multifunctional Bot</i></strong>
