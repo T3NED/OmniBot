@@ -1,0 +1,13 @@
+{
+  "name": "Omni",
+  "version": "1.0.0",
+  "description": "Multifunctional Discord Bot",
+  "main": "app.js",
+  "repository": "https://github.com/Omni-Discord-Bot/Omni.git",
+  "author": "Phunt05 <37057540+Phunt05@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "discordjs/discord.js",
+    "klasa": "dirigeants/klasa"
+  }
+}
