@@ -5,6 +5,7 @@
 <strong><i>Omni-Multifunctional Bot</i></strong>
 <br>
 <br>
+    <hr>
 <a href="https://discord.gg/xeaFzG2">
     <img src="https://img.shields.io/discord/496584856084545537.svg?colorB=Blue&logo=discord&label=Support&style=for-the-badge" alt="Support">
 </a>
