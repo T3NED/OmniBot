@@ -6,6 +6,9 @@
 <br>
 <br>
     <hr>
+    <a href="https://heroku.com/deploy?template=https://github.com/Omni-Discord-Bot/OmniBot">
+    <img src="https://img.shields.io/badge/deploy_to-heroku-997FBC.svg?style=for-the-badge">
+  </a>
 <a href="https://discord.gg/xeaFzG2">
     <img src="https://img.shields.io/discord/496584856084545537.svg?colorB=Blue&logo=discord&label=Support&style=for-the-badge" alt="Support">
 </a>
