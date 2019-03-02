@@ -7,4 +7,4 @@ new Client({
     commandEditing: true,
     typing: true,
     readyMessage: (client) => `Successfully initialized. Ready to serve ${client.guilds.size} guilds.`
-}).login(config.token);
+}).login(require("./config").discord_token);
