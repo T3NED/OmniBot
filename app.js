@@ -1,5 +1,4 @@
 const { Client } = require("klasa");
-const config = require("./config.json");
 
 new Client({
     fetchAllMembers: false,

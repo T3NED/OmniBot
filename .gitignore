@@ -68,3 +68,5 @@ yarn.lock
 
 #vscode user settings
 .vscode
+
+config.js
