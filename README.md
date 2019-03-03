@@ -42,5 +42,5 @@
 
 ## Authors
 * **[Phunt](https://github.com/Phunt05)**
-* **[Iona Dev](https://github.com/ionadev)**
+* **[iona Dev](https://github.com/ionadev)**
 * **[Anish Shobith](https://github.com/Anish-Shobith)**
