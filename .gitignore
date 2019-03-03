@@ -62,11 +62,10 @@ typings/
 
 # config file
 config.json
+config.js
 
 # yarn lock
 yarn.lock
 
 #vscode user settings
 .vscode
-
-config.js
