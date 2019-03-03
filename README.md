@@ -1,10 +1,6 @@
 <div align="center">
     <img src="https://cdn.discordapp.com/attachments/509385945405980683/547806345999417354/coollogo_com-29429781.png" align="center">
 <br>
-<br>
-<strong><i>Omni-Multifunctional Bot</i></strong>
-<br>
-<br>
     <hr>
     <a href="https://heroku.com/deploy?template=https://github.com/Omni-Discord-Bot/OmniBot">
     <img src="https://img.shields.io/badge/deploy_to-heroku-997FBC.svg?style=for-the-badge">
@@ -40,5 +36,11 @@
 </a>
 <br>
 <br>
-
+<strong><i>Omni-Multifunctional Bot</i></strong>
+<br>
 </div>
+
+## Authors
+* **[Phunt](https://github.com/Phunt05)**
+* **[Iona Dev](https://github.com/ionadev)**
+* **[Anish Shobith](https://github.com/Anish-Shobith)**
