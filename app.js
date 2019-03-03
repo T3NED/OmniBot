@@ -5,6 +5,13 @@ new Client({
   prefix: ".",
   commandEditing: true,
   typing: true,
+  pieceDefaults: {
+    commands: {
+      deletable: true,
+      quotedStringSupport: true,
+      bucket: 2
+    }
+  },
   providers: {
     default: "mongodb"
   },
