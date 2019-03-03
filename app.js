@@ -1,6 +1,6 @@
-const {Client} = require("klasa");
+const OmniClient = require("./lib/structures/OmniClient");
 
-new Client({
+new OmniClient({
   fetchAllMembers: false,
   prefix: ".",
   commandEditing: true,
