@@ -16,7 +16,6 @@ new OmniClient({
   providers: {
     default: "mongodb"
   },
-  presence: {activity: { name: config.presence.name, type: config.presence.type }, status: config.presence.status},
   readyMessage: client =>
     `Successfully initialized. Ready to serve ${client.guilds.size} guilds.`
 }).login(require("./config").discord_token);
