@@ -1,8 +1,9 @@
 const OmniClient = require("./lib/structures/OmniClient");
+const config = require("./config");
 
 new OmniClient({
   fetchAllMembers: false,
-  prefix: ".",
+  prefix: config.prefix,
   commandEditing: true,
   typing: true,
   pieceDefaults: {
@@ -15,7 +16,7 @@ new OmniClient({
   providers: {
     default: "mongodb"
   },
-  presence: {activity: { name: '.help', type: 'PLAYING' }, status: 'dnd'},
+  presence: {activity: { name: config.presence.name, type: config.presence.type }, status: config.presence.status},
   readyMessage: client =>
     `Successfully initialized. Ready to serve ${client.guilds.size} guilds.`
 }).login(require("./config").discord_token);
