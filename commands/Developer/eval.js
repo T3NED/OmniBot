@@ -1,6 +1,6 @@
 const { Command, Stopwatch, Type, util } = require("klasa");
 const { inspect } = require("util");
-const { post } = require("node-fetch");
+const { post } = require("snekfetch");
 
 module.exports = class extends Command {
 
