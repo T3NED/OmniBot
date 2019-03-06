@@ -9,10 +9,6 @@ const moment = require('moment')
 module.exports = class extends Command {
 
     constructor(...args) {
-        /**
-         * Any default options can be omitted completely.
-         * if all options are default, you can omit the constructor completely
-         */
         super(...args, {
             enabled: true,
             runIn: ['text'],
@@ -30,22 +26,13 @@ module.exports = class extends Command {
     async run(message, [user]) {
 
         const member = message.mentions.members.first() || message.member;
-        const gg = this.client.guilds.get("537106579946864678");
-
-        const emojis = {
-            red: gg.emojis.find(e => e.name == "dnd").toString(),
-            green: gg.emojis.find(e => e.name == "online").toString(),
-            purple: gg.emojis.find(e => e.name == "streaming").toString(),
-            white: gg.emojis.find(e => e.name == "offline").toString(),
-            yellow: gg.emojis.find(e => e.name == "idle").toString()
-        }
 
         const status = {
-            online: emojis.green + "**Online**",
-            offline: emojis.white + "**Offline**",
-            idle: emojis.yellow + "**Idle**",
-            dnd: emojis.red + "**Do Not Disturb**",
-            streaming: emojis.purple + "**Streaming**"
+            online: "Online",
+            offline: "Offline",
+            idle: "Idle",
+            dnd: "Do Not Disturb",
+            streaming: "Streaming"
         }
 
         const isBot = {
@@ -56,7 +43,6 @@ module.exports = class extends Command {
         const uEmbed = new MessageEmbed()
         .setColor("#c3f709")
         .setAuthor(`${isBot[member.user.bot]} | ${member.user.tag}`)
-        .setDescription(`${status[member.user.presence.status]}`)
         .setThumbnail(member.user.displayAvatarURL())
         .addField("Name", `${member.user.username}`, true)
         .addField("User ID", `${member.user.id}`, true)
@@ -64,6 +50,7 @@ module.exports = class extends Command {
         .addField("Playing", `${member.user.presence.activity !== null ? `${member.user.presence.activity}` : "None"}`, true)
         .addField(`Joined Discord` + " (" + moment.utc(member.user.createdAt).fromNow() + ")", `${moment.utc(member.user.createdAt).format("dddd, Do MMMM YYYY")}`, true)
         .addField(`Joined Server` + " (" + moment.utc(member.joinedAt).fromNow() + ")", `${moment.utc(member.joinedAt).format("dddd, Do MMMM YYYY")}`, true)
+        .addField(`Status`, status[member.user.presence.status])
         .addField("Roles", `${member.roles.filter(r => r.id !== message.guild.id).map(r=>r).join("|") || "No Roles"}`, true)
         .setFooter(`Replying to ${message.author.tag}`)
         .setTimestamp();
