@@ -15,17 +15,17 @@ module.exports = class extends Provider {
   async init() {
     const connection = mergeDefault(
       {
-        host: config.host,
-        port: config.port,
-        db: config.db,
+        host: config.database.host,
+        port: config.database.port,
+        db: config.database.db,
         options: {}
       },
       this.client.options.providers.mongodb
     );
     const mongoClient = await Mongo.connect(
-      `mongodb://${config.user}:${config.password}@${config.host}:${
-        config.port
-      }/${config.db}`,
+      `mongodb://${config.database.user}:${config.database.password}@${config.database.host}:${
+        config.database.port
+      }/${config.database.db}`,
       mergeObjects(connection.options, {useNewUrlParser: true})
     );
     this.db = mongoClient.db(connection.db);
