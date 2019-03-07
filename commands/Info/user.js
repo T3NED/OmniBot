@@ -42,7 +42,7 @@ module.exports = class extends Command {
 
         const uEmbed = new MessageEmbed()
         .setColor("#c3f709")
-        .setAuthor(`${isBot[member.user.bot]} | ${member.user.tag}`)
+        .setAuthor(`${isBot[member.user.bot]} | ${member.user.tag}`, member.user.displayAvatarURL())
         .setThumbnail(member.user.displayAvatarURL())
         .addField("Name", `${member.user.username}`, true)
         .addField("User ID", `${member.user.id}`, true)
