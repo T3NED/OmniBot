@@ -12,7 +12,7 @@ class modLogs extends Event {
   async run(guild, type, data) {
     if (!guild.settings.loggingChannel) return;
 
-    const channel = this.client.chennels.get(
+    const channel = this.client.channels.get(
       guild.settings.get("loggingChannel")
     );
 
