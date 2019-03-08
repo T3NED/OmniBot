@@ -10,6 +10,6 @@ module.exports = {
       password: process.env.DATABASE_PASSWORD ? process.env.DATABASE_PASSWORD : "",
       host: process.env.DATABASE_HOST ? process.env.DATABASE_HOST : "",
       port: process.env.DATABASE_PORT ? process.env.DATABASE_PORT : 8080,
-      db: process.env.DATABASE_DB_NAME ? process.env.DATABASE_DB_NAME ? ""
+      db: process.env.DATABASE_DB_NAME ? process.env.DATABASE_DB_NAME : ""
 }
 };
