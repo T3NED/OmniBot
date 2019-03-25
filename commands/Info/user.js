@@ -35,25 +35,22 @@ module.exports = class extends Command {
             streaming: "Streaming"
         }
 
-        const isBot = {
-            true: "Bot",
-            false: "User"
-        }
+        const isBot = member.user.bot ? 'Bot' : 'User';
+        const Roles = member.roles.filter(r => r.id !== message.guild.id).size > 10 ? member.roles.filter(r => r.id !== message.guild.id).size : member.roles.filter(r => r.id !== message.guild.id).map(r=>r).join("|") || "No Roles";
 
         const uEmbed = new MessageEmbed()
         .setColor("#c3f709")
-        .setAuthor(`${isBot[member.user.bot]} | ${member.user.tag}`, member.user.displayAvatarURL())
+        .setAuthor(`${isBot} | ${member.user.tag}`, member.user.displayAvatarURL())
         .setThumbnail(member.user.displayAvatarURL())
-        .addField("❯ Name", `${member.user.username}`, true)
-        .addField("❯ User ID", `${member.user.id}`, true)
-        .addField("❯ Nickname", `${member.nickname !== null ? `${member.nickname}` : "No Nickname"}`, true)
-        .addField("❯ Playing", `${member.user.presence.activity !== null ? `${member.user.presence.activity}` : "None"}`, true)
-        .addField(`❯ Joined Discord` + " (" + moment.utc(member.user.createdAt).fromNow() + ")", `${moment.utc(member.user.createdAt).format("dddd, Do MMMM YYYY")}`, true)
-        .addField(`❯ Joined Server` + " (" + moment.utc(member.joinedAt).fromNow() + ")", `${moment.utc(member.joinedAt).format("dddd, Do MMMM YYYY")}`, true)
+        .addField("❯ Name", member.user.username, true)
+        .addField("❯ User ID", member.user.id, true)
+        .addField("❯ Nickname", member.nickname ? member.nickname : "No Nickname", true)
+        .addField("❯ Playing", member.user.presence.activity !== null ? member.user.presence.activity : "None", true)
+        .addField(`❯ Joined Discord` + " (" + moment.utc(member.user.createdAt).fromNow() + ")", moment.utc(member.user.createdAt).format("dddd, Do MMMM YYYY"), true)
+        .addField(`❯ Joined Server` + " (" + moment.utc(member.joinedAt).fromNow() + ")", moment.utc(member.joinedAt).format("dddd, Do MMMM YYYY"), true)
         .addField(`❯ Status`, status[member.user.presence.status])
-        .addField("❯ Roles", `${member.roles.filter(r => r.id !== message.guild.id).map(r=>r).join("|") || "No Roles"}`, true)
-        .setFooter(`❯ Replying to ${message.author.tag}`, this.client.displayAvatarURL())
-        .setTimestamp();
+        .addField("❯ Roles", Roles, true)
+        .setFooter(`Omni ©`, this.client.user.displayAvatarURL())
 
         return message.sendEmbed(uEmbed);
 

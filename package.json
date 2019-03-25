@@ -2,17 +2,18 @@
   "name": "omni",
   "version": "1.0.0",
   "description": "Multifunctional Discord Bot",
-  "main": "app.js",
+  "main": "omni.js",
   "repository": "https://github.com/Omni-Discord-Bot/Omni.git",
   "author": "Phunt05 <37057540+Phunt05@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node app.js"
+    "start": "node omni.js"
   },
   "dependencies": {
     "brawlstars": "^1.2.0",
     "discord.js": "discordjs/discord.js",
     "klasa": "dirigeants/klasa",
+    "klasa-functions": "KlasaCommunityPlugins/functions",
     "klasa-tags": "bdistin/klasa-tags#master",
     "moment": "^2.24.0",
     "mongodb": "^3.1.13",
