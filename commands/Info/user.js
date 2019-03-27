@@ -3,8 +3,8 @@ const {
 } = require('klasa');
 const {
     MessageEmbed
-} = require('discord.js')
-const moment = require('moment')
+} = require('discord.js');
+const moment = require('moment');
 
 module.exports = class extends Command {
 
@@ -33,7 +33,7 @@ module.exports = class extends Command {
             idle: "Idle",
             dnd: "Do Not Disturb",
             streaming: "Streaming"
-        }
+        };
 
         const isBot = member.user.bot ? 'Bot' : 'User';
         const Roles = member.roles.filter(r => r.id !== message.guild.id).size > 10 ? member.roles.filter(r => r.id !== message.guild.id).size : member.roles.filter(r => r.id !== message.guild.id).map(r=>r).join("|") || "No Roles";
@@ -50,7 +50,7 @@ module.exports = class extends Command {
         .addField(`❯ Joined Server` + " (" + moment.utc(member.joinedAt).fromNow() + ")", moment.utc(member.joinedAt).format("dddd, Do MMMM YYYY"), true)
         .addField(`❯ Status`, status[member.user.presence.status])
         .addField("❯ Roles", Roles, true)
-        .setFooter(`Omni ©`, this.client.user.displayAvatarURL())
+        .setFooter(`Omni ©`, this.client.user.displayAvatarURL());
 
         return message.sendEmbed(uEmbed);
 

@@ -3,7 +3,7 @@ const {
 } = require('klasa');
 const {
 	MessageEmbed
-} = require('discord.js')
+} = require('discord.js');
 
 module.exports = class extends Command {
 
@@ -25,7 +25,7 @@ module.exports = class extends Command {
 			.addField("Twitter", `[Click Here.](https://twitter.com/bot_omni)`, true)
 			.addField("Patreon", `[Click Here.](https://www.patreon.com/officallyomni)`, true)
 			.addField("Github", `[Click Here](https://github.com/Omni-Discord-Bot/OmniBot)`, true)
-			.addField("Website", `[Click Here](http://omnibot.ml/)`, true)
+			.addField("Website", `[Click Here](http://omnibot.ml/)`, true);
 
 		return message.send(x);
 	}

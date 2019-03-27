@@ -13,12 +13,13 @@ module.exports = class extends Command {
             description: '',
             extendedHelp: 'No extended help available.',
             usage: '[resp:str]',
+            requiredPermissions: ["USE_EXTERNAL_EMOJIS"],
         });
 
         this.customizeResponse(
             "resp",
             "Please provide a valid tag"
-        )
+        );
     }
 
     async run(msg, [resp]) {
@@ -26,13 +27,13 @@ module.exports = class extends Command {
             if(msg.author.settings.ign.brawlstars) {
                 try {
                     let player = await this.client.brawl.getPlayer(msg.author.settings.ign.brawlstars);
+                    if(!player.brawlers) return msg.channel.send(this.generateFailed(`${msg.author}, Api is providing wrong information. Please try again later.`));
                     return msg.channel.send(this.generateSuccess(player));
                 } catch (e) {
-                    console.log(e)
                     return msg.channel.send(this.generateFailed(`${msg.author}, the API is currently down. Try again later.`));
                 }
             } else {
-                return msg.channel.send(this.generateFailed(`${msg.author}, You don't have a saved tag!`));
+                return msg.channel.send(this.generateFailed(`${msg.author}, You don't have a saved Profile Tag!`));
             }
         } else {
             let tag = await this.resolveResponse(resp, msg);
@@ -48,6 +49,7 @@ module.exports = class extends Command {
                     msg.channel.send(this.generateFailed(`${msg.author}, the API is currently down. Try again later.`));
                     break;
                 default:
+                    if(!player.brawlers) return msg.channel.send(this.generateFailed(`${msg.author}, Error fetching the api. Please try again later.`));
                     msg.channel.send(this.generateSuccess(player));
                     break;
             }
@@ -55,20 +57,22 @@ module.exports = class extends Command {
     }
 
     generateSuccess(Player) {
+        const emotes = this.client.icons;
         const embed = new MessageEmbed()
-            .setColor("#f48f42")
+            .setColor("#8ff422")
             .setAuthor(`${Player.name} | #${Player.tag}`)
             .setThumbnail(Player.avatarUrl)
-            .addField('Trophies', Player.trophies)
-            .addField('Highest Trophies', Player.highestTrophies)
-            .addField('Experience', `${Player.expLevel} - ${Player.expFmt}`)
-            .addField('3v3 Victories', Player.victories)
-            .addField('Solo Showdown Victories', Player.soloShowdownVictories)
-            .addField('Duo Showdown Victories', Player.duoShowdownVictories)
-            .addField('Robo Rumble Time', Player.bestRoboRumbleTime)
-            .addField('Big Brawler Time', Player.bestRoboRumbleTime)
-            .addField('Club', Player.club ? `${Player.club.name} - ${Player.club.role}` : 'Not in any Club')
-            .addField(`Brawlers [${Player.brawlersUnlocked}/24]`, Player.brawlers.map(b => b.name).join(" | "))
+            .addField('Trophies', emotes.Trophy + Player.trophies, true)
+            .addField('Highest Trophies', emotes.Trophy + Player.highestTrophies, true)
+            .addField('Level', `${Player.expLevel} - ${Player.expFmt}`, true)
+            .addField('3v3 Victories', Player.victories, true)
+            .addField('Solo Showdown Victories', emotes["Solo Showdown"] + Player.soloShowdownVictories, true)
+            .addField('Duo Showdown Victories', emotes["Duo Showdown"] + Player.duoShowdownVictories, true)
+            .addField('Robo Rumble Time', emotes["Robo Boss"] + Player.bestRoboRumbleTime, true)
+            .addField('Big Brawler Time', emotes["Big Game"] + Player.bestRoboRumbleTime, true)
+            .addField(Player.club ? `Club | ${Player.club.role}` : `Club` , Player.club ? `${emotes[Player.club.badgeUrl.slice(89, 94)]}${Player.club.name}` : 'Not in any Club', true)
+            .addField(`Club | Tag`, Player.club ? `#${Player.club.tag}` : 'Not in any Club', true)
+            .addField(`Brawlers [${Player.brawlersUnlocked}/24]`, Player.brawlers.map(b => this.client.icons[b.name] + "`" + String(b.power).padStart(2, '0') + "`").join(""));
             
         return embed;
     }

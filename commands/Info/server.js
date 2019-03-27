@@ -18,7 +18,7 @@ module.exports = class extends Command {
 
     async run(msg) {
         
-        ;
+        
     }
 
 };

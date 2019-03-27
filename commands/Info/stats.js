@@ -28,19 +28,21 @@ module.exports = class extends Command {
         .setColor('#42f4c5')
         .setAuthor(`Stats | ${this.client.user.tag}`)
         .setThumbnail(`${this.client.user.displayAvatarURL()}`)
-		.addField('General', `Users- ${(users || this.client.users.size).toLocaleString()}\nGuilds- ${(guilds || this.client.guilds.size).toLocaleString()}\nChannels- ${(channels || this.client.channels.size).toLocaleString()}`, true)
-		.addField('System', `Memory Usage- ${(memory || process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB\nUptime- ${Duration.toNow(Date.now() - (process.uptime() * 1000))}\nPing- ${Math.round(this.client.ws.ping)} ms`, true)
-		.addField('Version', `NodeJS- ${process.version}\nDiscord.Js- ${discordVersion}\nKlasa- ${klasaVersion}`, true)
-		.addField('Commands', `Total Commands- ${this.client.commands.size}\nCommands Ran- ${counter ? counter.total : this.client.settings.counter.total}\nMost Used- ${counter ? counter.commands.sort(this.compare)[0].name : this.client.settings.counter.commands.sort(this.compare)[0].name}`, true)
+				.addField('General', `Users- ${(users || this.client.users.size).toLocaleString()}\nGuilds- ${(guilds || this.client.guilds.size).toLocaleString()}\nChannels- ${(channels || this.client.channels.size).toLocaleString()}`, true)
+				.addField('System', `Memory Usage- ${(memory || process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB\nUptime- ${Duration.toNow(Date.now() - (process.uptime() * 1000))}\nPing- ${Math.round(this.client.ws.ping)} ms`, true)
+				.addField('Version', `NodeJS- ${process.version}\nDiscord.Js- ${discordVersion}\nKlasa- ${klasaVersion}`, true)
+				.addField('Commands', `Total Commands- ${this.client.commands.size}\nCommands Ran- ${counter ? counter.total : this.client.settings.counter.total}\nMost Used- ${counter ? counter.commands.sort(this.compare)[0].name : this.client.settings.counter.commands.sort(this.compare)[0].name}`, true);
 
 		return message.sendEmbed(stats);
 	}
 
 	async compare(a,b) {
-		if (a.count > b.count)
-		  return -1;
-		if (a.count < b.count)
-		  return 1;
+		if (a.count > b.count) {
+				return -1;
+		}
+		if (a.count < b.count) {
+			return 1;
+		}
 		return 0;
 	}
 
