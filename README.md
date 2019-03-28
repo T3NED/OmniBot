@@ -40,7 +40,9 @@ We don't recommend Self Hosting Omni. Instead use the actual bot ([Invite](https
 
 Although you can run the bot locally for development purposes. Simply install the requirements.
 Run this command.
-```yarn```
+```
+yarn
+```
 
 ## Authors
 * **[Phunt](https://github.com/Phunt05)**
