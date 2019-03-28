@@ -66,7 +66,7 @@ module.exports = class extends Command {
         const topMembers = Club.members.slice(0, 4).map(m => `${m.trophies} - ${m.name}`);
         const topLevel = Club.members.sort(function(a, b){return b.expLevel - a.expLevel;}).slice(0, 4).map(m => `${m.expLevel} - ${m.name}`);
         const embed = new MessageEmbed()
-            .setColor("#8ff422")
+            .setColor("RANDOM")
             .setAuthor(`${Club.name} | #${Club.tag}`)
             .setThumbnail(Club.badgeUrl)
             .addField('Region', `:flag_${Club.region.toLowerCase()}:` + Club.region, true)

@@ -7,7 +7,7 @@ module.exports = class extends Command {
         super(...args, {
             enabled: true,
             runIn: ['text'],
-            aliases: ["brawl"],
+            aliases: ["brawler"],
             cooldown: 3,
             permissionLevel: 0,
             description: '',
@@ -61,18 +61,10 @@ module.exports = class extends Command {
         const embed = new MessageEmbed()
             .setColor("RANDOM")
             .setAuthor(`${Player.name} | #${Player.tag}`)
-            .setThumbnail(Player.avatarUrl)
-            .addField('Trophies', emotes.Trophy + Player.trophies, true)
-            .addField('Highest Trophies', emotes.Trophy + Player.highestTrophies, true)
-            .addField('Level', `${Player.expLevel} - ${Player.expFmt}`, true)
-            .addField('3v3 Victories', Player.victories, true)
-            .addField('Solo Showdown Victories', emotes["Solo Showdown"] + Player.soloShowdownVictories, true)
-            .addField('Duo Showdown Victories', emotes["Duo Showdown"] + Player.duoShowdownVictories, true)
-            .addField('Robo Rumble Time', emotes["Robo Boss"] + Player.bestRoboRumbleTime, true)
-            .addField('Big Brawler Time', emotes["Big Game"] + Player.bestRoboRumbleTime, true)
-            .addField(Player.club ? `Club | ${Player.club.role}` : `Club` , Player.club ? `${emotes[Player.club.badgeUrl.slice(89, 94)]}${Player.club.name}` : 'Not in any Club', true)
-            .addField(`Club | Tag`, Player.club ? `#${Player.club.tag}` : 'Not in any Club', true)
-            .addField(`Brawlers [${Player.brawlersUnlocked}/24]`, Player.brawlers.map(b => this.client.icons[b.name] + "`" + String(b.power).padStart(2, '0') + "`").join(""));
+            .setDescription(`__**Brawlers Unlocked - ${Player.brawlersUnlocked}/24**__`);
+            Player.brawlers.forEach(B => {
+                embed.addField(`${emotes[B.name]} ${B.hasSkin ? B.skin : B.name}`, emotes.Bounty + " `Rank " + B.rank + "`\n" + emotes.Experience + " `" + String(B.power).padStart(2, '0') + "` " +  emotes.Trophy +" `" + B.trophies + "/" + B.highestTrophies + "`", true);                
+            });
             
         return embed;
     }
