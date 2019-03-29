@@ -1,5 +1,6 @@
 const { Command } = require('klasa');
 const { MessageEmbed } = require('discord.js');
+const { RichDisplay } = require('klasa');
 
 module.exports = class extends Command {
 
@@ -10,42 +11,81 @@ module.exports = class extends Command {
             aliases: ["events"],
             cooldown: 3,
             permissionLevel: 0,
-            description: '',
-            extendedHelp: 'No extended help available.',
-            usage: '',
+            description: 'Shows the current and upcoming events for brawlstars.',
+            extendedHelp: 'Only valid categories are `upcoming` and `current`.',
+            usage: '<category:str>',
             requiredPermissions: ["USE_EXTERNAL_EMOJIS"],
         });
+        this.customizeResponse(
+            'category',
+            'Please provide a valid argument. Either upcoming or current.'
+        );
     }
 
-    async run(msg) {
+    async run(msg, category) {
+        const emojis = this.client.icons;
+        if(category[0].toLowerCase() === 'current') {
+            try {
+                const events = await this.client.brawl.getCurrentEvents();
+                const currentEmbed = new RichDisplay(new MessageEmbed()
+                    .setColor("RANDOM")
+                );
+                for (let i = 0; i < events.current.length; i++) {
+                    currentEmbed.setFooterSuffix(" | End Time ");
+                    currentEmbed.addPage(t => {
+                        return t
+                            .setColor("RANDOM")
+                            .setDescription(emojis[events.current[i].gameMode] + "**" + events.current[i].gameMode + "**")
+                            .setThumbnail(events.current[i].mapImageUrl)
+                            .addField("Map", "`" + events.current[i].mapName + "`")
+                            .addField("Rewards", `Free Keys: ` + "`" + events.current[i].freeKeys + "`", true)
+                            .setTimestamp(events.current[i].endTime);
+                    });
+                }
         
-    }
-
-    generateSuccess(Player) {
-        const emotes = this.client.icons;
-        const embed = new MessageEmbed()
-            .setColor("RANDOM")
-            .setAuthor(`${Player.name} | #${Player.tag}`)
-            .setThumbnail(Player.avatarUrl)
-            .addField('Trophies', emotes.Trophy + Player.trophies, true)
-            .addField('Highest Trophies', emotes.Trophy + Player.highestTrophies, true)
-            .addField('Level', `${Player.expLevel} - ${Player.expFmt}`, true)
-            .addField('3v3 Victories', Player.victories, true)
-            .addField('Solo Showdown Victories', emotes["Solo Showdown"] + Player.soloShowdownVictories, true)
-            .addField('Duo Showdown Victories', emotes["Duo Showdown"] + Player.duoShowdownVictories, true)
-            .addField('Robo Rumble Time', emotes["Robo Boss"] + Player.bestRoboRumbleTime, true)
-            .addField('Big Brawler Time', emotes["Big Game"] + Player.bestRoboRumbleTime, true)
-            .addField(Player.club ? `Club | ${Player.club.role}` : `Club` , Player.club ? `${emotes[Player.club.badgeUrl.slice(89, 94)]}${Player.club.name}` : 'Not in any Club', true)
-            .addField(`Club | Tag`, Player.club ? `#${Player.club.tag}` : 'Not in any Club', true)
-            .addField(`Brawlers [${Player.brawlersUnlocked}/24]`, Player.brawlers.map(b => this.client.icons[b.name] + "`" + String(b.power).padStart(2, '0') + "`").join(""));
-            
-        return embed;
+                return currentEmbed.run(await msg.send('Fetching Current Events...'), {
+                    time: 120000,
+                    filter: (reaction, user) => user === msg.author
+                });
+            } catch (e) {
+                return msg.send(this.generateFailed(`Error Fetching the events. Please try again later.`));
+            }
+        } else if(category[0].toLowerCase() === 'upcoming') {
+            try {
+                const events = await this.client.brawl.getUpcomingEvents();
+                if(!events.upcoming) return msg.send(this.generateFailed(`Error Fetching events`));
+                const upcomingEmbed = new RichDisplay(new MessageEmbed()
+                    .setColor("RANDOM")
+                );
+                for (let i = 0; i < events.upcoming.length; i++) {
+                    upcomingEmbed.setFooterSuffix(" | Start Time ");
+                    upcomingEmbed.addPage(t => {
+                        return t
+                            .setColor("RANDOM")
+                            .setDescription(emojis[events.upcoming[i].gameMode] + "**" + events.upcoming[i].gameMode + "**")
+                            .setThumbnail(events.upcoming[i].mapImageUrl)
+                            .addField("Map", "`" + events.upcoming[i].mapName + "`")
+                            .addField("Rewards", `Free Keys: ` + "`" + events.upcoming[i].freeKeys + "`", true)
+                            .setTimestamp(events.upcoming[i].startTime);
+                    });
+                }
+                
+                return upcomingEmbed.run(await msg.send('Fetching Upcoming Events...'), {
+                    time: 120000,
+                    filter: (reaction, user) => user === msg.author
+                });
+            } catch (e) {
+                return msg.send(this.generateFailed(`Error Fetching the events. Please try again later.`));
+            }
+        } else {
+            return msg.send(this.generateFailed("Only valid categories are `upcoming` and `current`"));
+        }
     }
 
     generateFailed(message) {
         const embed = new MessageEmbed()
-        .setColor("RED")
-        .setDescription(message);
+            .setColor("RED")
+            .setDescription(message);
         return embed;
     }
 

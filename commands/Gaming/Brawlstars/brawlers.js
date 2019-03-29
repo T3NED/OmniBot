@@ -10,7 +10,7 @@ module.exports = class extends Command {
             aliases: ["brawler"],
             cooldown: 3,
             permissionLevel: 0,
-            description: '',
+            description: 'Gives a brief info about all the brawlers the player have and their stats',
             extendedHelp: 'No extended help available.',
             usage: '[resp:str]',
             requiredPermissions: ["USE_EXTERNAL_EMOJIS"],
