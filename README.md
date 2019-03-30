@@ -46,13 +46,13 @@ yarn
 
 ## Acknowledgements
 |                      Libraries                         	|                       Description                       	|
-|:------------------------------------------------------:	|:-------------------------------------------------------:	|
+|:------------------------------------------------------    |:-------------------------------------------------------	|
 | [Discord.js](https://github.com/discordjs/discord.js)  	| JavaScript library for interacting with the Discord API 	|
 | [Klasa](https://github.com/dirigeants/klasa)           	| Discord.js bot framework                                	|
 | [BrawlStars](https://github.com/pollen5/brawlstars.js) 	| Node.js API Wrapper for BrawlAPI                        	|
 
 |              APIs                  	|         Description        	|
-|:----------------------------------:	|:--------------------------:	|
+|:----------------------------------	|:--------------------------	|
 | [brawlapi.cf](https://brawlapi.cf) 	| Brawl Stars Unofficial API 	|
 
 ## Authors
