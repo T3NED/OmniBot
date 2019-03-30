@@ -26,8 +26,10 @@ module.exports = class extends Command {
         if(!resp) {
             if(msg.author.settings.ign.brawlstars) {
                 try {
-                    let player = await this.client.brawl.getPlayer(msg.author.settings.ign.brawlstars);
+                    let tag = msg.author.settings.ign.brawlstars;
+                    let player = await this.client.brawl.getPlayer(tag);
                     if(!player.brawlers) return msg.channel.send(this.generateFailed(`${msg.author}, Api is providing wrong information. Please try again later.`));
+                    if(player.tag !== tag) return msg.channel.send(this.generateFailed(`${msg.author}, Error fetching the api. Please try again later.`));
                     return msg.channel.send(this.generateSuccess(player));
                 } catch (e) {
                     return msg.channel.send(this.generateFailed(`${msg.author}, the API is currently down. Try again later.`));
@@ -50,6 +52,7 @@ module.exports = class extends Command {
                     break;
                 default:
                     if(!player.brawlers) return msg.channel.send(this.generateFailed(`${msg.author}, Error fetching the api. Please try again later.`));
+                    if(player.tag !== tag) return msg.channel.send(this.generateFailed(`${msg.author}, Error fetching the api. Please try again later.`));
                     msg.channel.send(this.generateSuccess(player));
                     break;
             }

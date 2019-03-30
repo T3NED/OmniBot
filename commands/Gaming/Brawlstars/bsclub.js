@@ -28,7 +28,7 @@ module.exports = class extends Command {
                 try {
                     let player = await this.client.brawl.getPlayer(msg.author.settings.ign.brawlstars);
                     if(!player.club) {
-                        return msg.channel.send(this.generateFailed(`${msg.author}, You are not in a club. If you are in a club then it is an inernal error. \nPlease try again later`));
+                        return msg.channel.send(this.generateFailed(`**${msg.author}, You are not in a club. \n\nIf you are in a club then it is an internal error. Please try again later**`));
                     } else {
                         let club = await this.client.brawl.getClub(player.club.tag);
                         return msg.channel.send(this.generateSuccess(club));
