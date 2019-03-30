@@ -115,18 +115,21 @@ module.exports = class extends Command {
     async resolveResponse(response, orgMsg) {
         if(orgMsg.mentions.members.first()) {
             let ptag = orgMsg.mentions.members.first().user.settings.ign.brawlstars;
+            let player = await this.client.brawl.getPlayer(ptag);
             let tag;
-            await this.client.brawl.getPlayer(ptag).club ? tag = await this.client.brawl.getPlayer(ptag).club.tag : tag = null;
+            player.club ? tag = player.club.tag : tag = null;
             return tag;
         } else if(orgMsg.guild.members.get(response)) {
             let ptag = orgMsg.guild.members.get(response).user.settings.ign.brawlstars;
+            let player = await this.client.brawl.getPlayer(ptag);
             let tag;
-            await this.client.brawl.getPlayer(ptag).club ? tag = await this.client.brawl.getPlayer(ptag).club.tag : tag = null;
+            player.club ? tag = player.club.tag : tag = null;
             return tag;
         } else if(orgMsg.guild.members.find(m => m.user.username === response)) {
             let ptag = orgMsg.guild.members.find(m => m.user.username === response).user.settings.ign.brawlstars;
+            let player = await this.client.brawl.getPlayer(ptag);
             let tag;
-            await this.client.brawl.getPlayer(ptag).club ? tag = await this.client.brawl.getPlayer(ptag).club.tag : tag = null;
+            player.club ? tag = player.club.tag : tag = null;
             return tag;
         } else {
             let tag = response.trim().toUpperCase().replace(/#/g, '');

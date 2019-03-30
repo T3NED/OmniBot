@@ -25,7 +25,7 @@ module.exports = class extends Command {
         let tag = resp.trim().toUpperCase().replace(/#/g, '');
         try {
             await this.client.brawl.getPlayer(tag);
-            if(msg.author.settings.ign.brawlstars === tag) return msg.channel.send(this.generateFailed(`${msg.author}, same tag is saved in the database.`));
+            if(msg.author.settings.ign.brawlstars === tag) return msg.channel.send(this.generateFailed(`${msg.author}, your new tag is same as your existing tag.`));
             await msg.author.settings.update("ign.brawlstars", tag).then(() => {
                 msg.channel.send(this.generateSuccess(`**${msg.author}, your tag \`(${tag})\` has been saved to our database. Now you can view your stats from any server where ${this.client.user} is in.**`));
             });

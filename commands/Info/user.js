@@ -1,9 +1,5 @@
-const {
-    Command
-} = require('klasa');
-const {
-    MessageEmbed
-} = require('discord.js');
+const { Command } = require('klasa');
+const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 
 module.exports = class extends Command {
@@ -23,9 +19,9 @@ module.exports = class extends Command {
         });
     }
 
-    async run(message, [user]) {
+    async run(msg, [user]) {
 
-        const member = message.mentions.members.first() || message.member;
+        const member = msg.mentions.members.first() || msg.member;
 
         const status = {
             online: "Online",
@@ -36,23 +32,24 @@ module.exports = class extends Command {
         };
 
         const isBot = member.user.bot ? 'Bot' : 'User';
-        const Roles = member.roles.filter(r => r.id !== message.guild.id).size > 10 ? member.roles.filter(r => r.id !== message.guild.id).size : member.roles.filter(r => r.id !== message.guild.id).map(r=>r).join("|") || "No Roles";
+        const Roles = member.roles.filter(r => r.id !== msg.guild.id).size > 50 ? `${member.roles.filter(r => r.id !== msg.guild.id).size}` : member.roles.sort(function(a, b){return b.position - a.position;}).filter(r => r.id !== msg.guild.id).map(r=>r).join("|") || "No Roles";
 
         const uEmbed = new MessageEmbed()
         .setColor("#c3f709")
         .setAuthor(`${isBot} | ${member.user.tag}`, member.user.displayAvatarURL())
         .setThumbnail(member.user.displayAvatarURL())
-        .addField("❯ Name", member.user.username, true)
-        .addField("❯ User ID", member.user.id, true)
-        .addField("❯ Nickname", member.nickname ? member.nickname : "No Nickname", true)
-        .addField("❯ Playing", member.user.presence.activity !== null ? member.user.presence.activity : "None", true)
-        .addField(`❯ Joined Discord` + " (" + moment.utc(member.user.createdAt).fromNow() + ")", moment.utc(member.user.createdAt).format("dddd, Do MMMM YYYY"), true)
-        .addField(`❯ Joined Server` + " (" + moment.utc(member.joinedAt).fromNow() + ")", moment.utc(member.joinedAt).format("dddd, Do MMMM YYYY"), true)
-        .addField(`❯ Status`, status[member.user.presence.status])
-        .addField("❯ Roles", Roles, true)
-        .setFooter(`Omni ©`, this.client.user.displayAvatarURL());
+        .addField("Name", member.user.username, true)
+        .addField("User ID", member.user.id, true)
+        .addField("Nickname", member.nickname ? member.nickname : "No Nickname", true)
+        .addField("Playing", member.user.presence.activity !== null ? member.user.presence.activity : "None", true)
+        .addField(`Joined Discord` + " (" + moment.utc(member.user.createdAt).fromNow() + ")", moment.utc(member.user.createdAt).format("dddd, Do MMMM YYYY"), true)
+        .addField(`Joined Server` + " (" + moment.utc(member.joinedAt).fromNow() + ")", moment.utc(member.joinedAt).format("dddd, Do MMMM YYYY"), true)
+        .addField(`Status`, status[member.user.presence.status])
+        .addField("Roles", Roles, true)
+        .setFooter(`Replying to ${msg.author.tag}`,`${msg.author.displayAvatarURL()}`)
+        .setTimestamp();
 
-        return message.sendEmbed(uEmbed);
+        return msg.sendEmbed(uEmbed);
 
     }
 
