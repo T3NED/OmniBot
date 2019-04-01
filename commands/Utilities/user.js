@@ -10,7 +10,7 @@ module.exports = class extends Command {
             runIn: ['text'],
             requiredPermissions: [],
             aliases: [],
-            cooldown: 0,
+            cooldown: 3,
             deletable: false,
             permissionLevel: 0,
             description: 'Gives a brief info about the user',
