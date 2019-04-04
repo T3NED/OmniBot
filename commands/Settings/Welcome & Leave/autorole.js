@@ -1,9 +1,5 @@
-const {
-    Command
-} = require('klasa');
-const {
-    MessageEmbed
-} = require('discord.js')
+const { Command } = require('klasa');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = class extends Command {
 
@@ -21,10 +17,10 @@ module.exports = class extends Command {
     }
 
     async run(msg, [role]) {
-        if(msg.guild.settings.autorole.enabled && !role) return msg.send(this.generateEmbed(`**${msg.author}, There's no autorole set for this server.**`))
+        if(msg.guild.settings.autorole.enabled && !role) return msg.send(this.generateEmbed(`**${msg.author}, There's no autorole set for this server.**`));
         if(!role) return msg.send(this.generateEmbed(`**${msg.author}, Autorole for this server is ${msg.guild.roles.get(msg.guild.settings.roles.autorole).toString()}**`));
         await msg.guild.settings.update("roles.autorole", role, msg.guild).then(() => {
-            msg.send(this.generateEmbed(`**${msg.author}, Set the autorole for this server to ${role}**`))
+            msg.send(this.generateEmbed(`**${msg.author}, Set the autorole for this server to ${role}**`));
         });
     }
 

@@ -1,5 +1,5 @@
 const { Command } = require('klasa');
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js');
 
 module.exports = class extends Command {
 
@@ -19,7 +19,7 @@ module.exports = class extends Command {
     async run(msg, [prefix]) {
         if(!prefix) return msg.send(this.generateEmbed(`**${msg.author}, Prefix for this server is** ` + "`" + msg.guild.settings.prefix + "`"));
         await msg.guild.settings.update({ prefix: prefix }).then(() => {
-            msg.send(this.generateEmbed(`**${msg.author}, Changed the prefix to** ` + "`" + prefix + "`"))
+            msg.send(this.generateEmbed(`**${msg.author}, Changed the prefix to** ` + "`" + prefix + "`"));
         });
     }
 

@@ -1,9 +1,5 @@
-const {
-    Command
-} = require('klasa');
-const {
-    MessageEmbed
-} = require('discord.js')
+const { Command } = require('klasa');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = class extends Command {
 
@@ -21,10 +17,10 @@ module.exports = class extends Command {
     }
 
     async run(msg, [channel]) {
-        if(!msg.guild.settings.message.logs && !channel) return msg.send(this.generateEmbed(`**${msg.author}, There's no Logging Channe set for this server.**`))
+        if(!msg.guild.settings.message.logs && !channel) return msg.send(this.generateEmbed(`**${msg.author}, There's no Logging Channe set for this server.**`));
         if(!channel) return msg.send(this.generateEmbed(`**${msg.author}, Logging Channel for this server is ${msg.guild.channels.get(msg.guild.settings.message.logs)}**`));
         await msg.guild.settings.update("message.logs", channel, msg.guild).then(() => {
-            msg.send(this.generateEmbed(`**${msg.author}, Set the Logging Channel for this server to ${channel}**`))
+            msg.send(this.generateEmbed(`**${msg.author}, Set the Logging Channel for this server to ${channel}**`));
         });
     }
 

@@ -1,7 +1,4 @@
-const {
-  Provider,
-  util: {mergeDefault, mergeObjects, isObject}
-} = require("klasa");
+const { Provider, util: {mergeDefault, mergeObjects, isObject} } = require("klasa");
 const {MongoClient: Mongo} = require("mongodb");
 const config = require("../config.js");
 module.exports = class extends Provider {
