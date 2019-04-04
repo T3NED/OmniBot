@@ -1,7 +1,7 @@
 <div align="center">
     <img src="https://cdn.discordapp.com/attachments/509385945405980683/547806345999417354/coollogo_com-29429781.png" align="center">
 <br>
-<a href="https://discord.gg/xeaFzG2">
+<a href="https://discord.gg/TutA5bZ">
     <img src="https://img.shields.io/discord/496584856084545537.svg?colorB=Blue&logo=discord&label=Support&style=for-the-badge" alt="Support">
 </a>
 
