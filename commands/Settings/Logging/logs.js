@@ -12,22 +12,36 @@ module.exports = class extends Command {
             permissionLevel: 6,
             description: 'Set the Logging Channel for the server.',
             extendedHelp: 'No extended help available.',
-            usage: '[channel:channelname]'
+            usage: '<set|disable> [channel:channelname]',
+            usageDelim: ' ',
+            subcommands: true,          
         });
     }
 
-    async run(msg, [channel]) {
-        if(!msg.guild.settings.logging.logs && !channel) return msg.send(this.generateEmbed(`**${msg.author}, There's no Logging Channe set for this server.**`));
-        if(!channel) return msg.send(this.generateEmbed(`**${msg.author}, Logging Channel for this server is ${msg.guild.channels.get(msg.guild.settings.logging.logs)}**`));
-        if(channel == "disable") return; 
-        await msg.guild.settings.update("logging.logs", channel, msg.guild).then(() => {
-            msg.send(this.generateEmbed(`**${msg.author}, Set the Logging Channel for this server to ${channel}**`));
+    async set(msg, [channel]) {
+        if(!channel) return msg.send(this.generateFailed(`**${msg.author}, Please provide a valid channel**`));
+        await msg.guild.settings.update("log.enabled", true, msg.guild);
+        await msg.guild.settings.update("log.channel", channel, msg.guild).then(() => {
+            msg.send(this.generateSuccess(`**${msg.author}, Logging Channel is now set to ${channel}**`));
         });
     }
 
-    generateEmbed(message) {
+    async disable(msg) {
+        if(!msg.guild.settings.log.enabled) return msg.send(this.generateFailed(`**${msg.author}, Logging is already disabled**`));
+        await msg.guild.settings.update("log.enabled", true, msg.guild).then(() => {
+            msg.send(this.generateSuccess(`**${msg.author}, Logging is now disabled**`));
+        });
+    }
+
+    generateSuccess(message) {
         const embed = new MessageEmbed()
             .setColor("#f48f42")
+            .setDescription(message);
+        return embed;
+    }
+    generateFailed(message) {
+        const embed = new MessageEmbed()
+            .setColor("RED")
             .setDescription(message);
         return embed;
     }
