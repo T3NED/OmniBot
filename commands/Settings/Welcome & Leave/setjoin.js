@@ -12,21 +12,43 @@ module.exports = class extends Command {
             permissionLevel: 6,
             description: 'Set the welcome message and channel to greet when user joins',
             extendedHelp: 'No extended help available.',
-            usage: '[channel:channelname]'
+            usage: '<msg|channel|disable> [channel:channelname] [message:str] [...]',
+            usageDelim: ' ',
+            subcommands: true,
         });
     }
 
-    async run(msg, [channel]) {
-        if(!msg.guild.settings.message.logs && !channel) return msg.send(this.generateEmbed(`**${msg.author}, There's no Logging Channe set for this server.**`));
-        if(!channel) return msg.send(this.generateEmbed(`**${msg.author}, Logging Channel for this server is ${msg.guild.channels.get(msg.guild.settings.message.logs)}**`));
-        await msg.guild.settings.update("message.logs", channel, msg.guild).then(() => {
-            msg.send(this.generateEmbed(`**${msg.author}, Set the Logging Channel for this server to ${channel}**`));
+    async channel(msg, [channel]) {
+        if(!channel) return msg.send(this.generateFailed(`**${msg.author}, Please provide a valid channel**`));
+        await msg.guild.settings.update("greet.welcome.channel", channel, msg.guild).then(() => {
+            return msg.send(this.generateSuccess(`**${msg.author}, Set the join-channel in this server to ${channel}**`));
         });
     }
 
-    generateEmbed(message) {
+    async msg(msg, [...message]) {
+        if(!message) return msg.send(this.generateFailed(`**${msg.author}, Please provide a greet message**`));
+        await msg.guild.settings.update("greet.welcome.enabled", true, msg.guild);
+        await msg.guild.settings.update("greet.welcome.message", message.join(" "), msg.guild).then(() => {
+            return msg.send(this.generateSuccess(`**${msg.author}, Set the join-message in this server to \n\n${message.join(" ")}**`));
+        });
+    }
+
+    async disable(msg) {
+        if(!msg.guild.settings.greet.welcome.enabled) return msg.send(this.generateFailed(`**Greets for new members is already disabled in this server**`));
+        await msg.guild.settings.update("greet.welcome.enabled", false, msg.guild).then(() => {
+            return msg.send(this.generateSuccess(`**${msg.author}, Greets for new members is now disabled in this server**`));
+        });
+    }
+
+    generateSuccess(message) {
         const embed = new MessageEmbed()
             .setColor("#f48f42")
+            .setDescription(message);
+        return embed;
+    }
+    generateFailed(message) {
+        const embed = new MessageEmbed()
+            .setColor("RED")
             .setDescription(message);
         return embed;
     }
