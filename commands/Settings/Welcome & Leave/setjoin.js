@@ -21,7 +21,7 @@ module.exports = class extends Command {
     async channel(msg, [channel]) {
         if(!channel) return msg.send(this.generateFailed(`**${msg.author}, Please provide a valid channel**`));
         await msg.guild.settings.update("greet.welcome.channel", channel, msg.guild).then(() => {
-            return msg.send(this.generateSuccess(`**${msg.author}, Set the join-channel in this server to ${channel}**`));
+            return msg.send(this.generateSuccess(`**${msg.author}, Welcome channel is now set to ${channel}**`));
         });
     }
 
@@ -29,14 +29,14 @@ module.exports = class extends Command {
         if(!message) return msg.send(this.generateFailed(`**${msg.author}, Please provide a greet message**`));
         await msg.guild.settings.update("greet.welcome.enabled", true, msg.guild);
         await msg.guild.settings.update("greet.welcome.message", message.join(" "), msg.guild).then(() => {
-            return msg.send(this.generateSuccess(`**${msg.author}, Set the join-message in this server to \n\n${message.join(" ")}**`));
+            return msg.send(this.generateSuccess(`**${msg.author}, Welcome Message is now set to \n\n${message.join(" ")}**`));
         });
     }
 
     async disable(msg) {
-        if(!msg.guild.settings.greet.welcome.enabled) return msg.send(this.generateFailed(`**Greets for new members is already disabled in this server**`));
+        if(!msg.guild.settings.greet.welcome.enabled) return msg.send(this.generateFailed(`**Welcome Message is already disabled in this server**`));
         await msg.guild.settings.update("greet.welcome.enabled", false, msg.guild).then(() => {
-            return msg.send(this.generateSuccess(`**${msg.author}, Greets for new members is now disabled in this server**`));
+            return msg.send(this.generateSuccess(`**${msg.author}, Welcome Message is now disabled in this server**`));
         });
     }
 
