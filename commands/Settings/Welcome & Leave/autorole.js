@@ -56,12 +56,14 @@ module.exports = class extends Command {
             .setDescription(message);
         return embed;
     }
+
     generateFailed(message) {
         const embed = new MessageEmbed()
             .setColor("RED")
             .setDescription(message);
         return embed;
     }
+    
     showAutoroles(role_user, role_bot, msg) {
         const embed = new MessageEmbed()
             .setColor("GREEN")

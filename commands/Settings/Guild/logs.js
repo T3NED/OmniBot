@@ -64,12 +64,14 @@ module.exports = class extends Command {
             .setDescription(message);
         return embed;
     }
+
     generateFailed(message) {
         const embed = new MessageEmbed()
             .setColor("RED")
             .setDescription(message);
         return embed;
     }
+    
     update(key, msg) {
         if (msg.guild.settings.get(`log.${key}`)) {
             msg.guild.settings.update(`log.${key}`, false);

@@ -46,6 +46,7 @@ module.exports = class extends Command {
             .setDescription(message);
         return embed;
     }
+    
     generateFailed(message) {
         const embed = new MessageEmbed()
             .setColor("RED")
