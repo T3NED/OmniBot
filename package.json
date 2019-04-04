@@ -15,7 +15,6 @@
     "eslint": "^5.15.3",
     "klasa": "dirigeants/klasa",
     "klasa-functions": "KlasaCommunityPlugins/functions",
-    "klasa-tags": "bdistin/klasa-tags#master",
     "moment": "^2.24.0",
     "mongodb": "^3.1.13",
     "os": "^0.1.1",
