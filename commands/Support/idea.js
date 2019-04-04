@@ -27,7 +27,7 @@ module.exports = class extends Command {
             return msg.channel.send(this.generateFailed(`${msg.author}, Please provide a valid idea. Idea must be more than 10 letters.`));
         }
         const ideaChannel = this.client.channels.get(config.channels.support);
-        msg.delete().then(msg.channel.send(this.generateConfirm(`Thank you ${msg.author}, your suggestion has been sent to my [Support server](https://discord.gg/xeaFzG2)`)));
+        msg.delete().then(msg.channel.send(this.generateConfirm(`Thank you ${msg.author}, your suggestion has been sent to my [Support server](https://discord.gg/TutA5bZ)`)));
         await ideaChannel.send(this.generateSuccess(idea, msg.author, msg)).then(m => {
             m.react("✅");
             m.react("❌");

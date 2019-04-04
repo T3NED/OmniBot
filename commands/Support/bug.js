@@ -27,7 +27,7 @@ module.exports = class extends Command {
             return msg.channel.send(this.generateFailed(`${msg.author}, Please provide a valid bug. Bug must be more than 10 letters.`));
         }
         const bugChannel = this.client.channels.get(config.channels.support);
-        msg.delete().then(msg.channel.send(this.generateConfirm(`Thank you ${msg.author}, Bug has been reported to my [Support server](https://discord.gg/xeaFzG2)`)));
+        msg.delete().then(msg.channel.send(this.generateConfirm(`Thank you ${msg.author}, Bug has been reported to my [Support server](https://discord.gg/TutA5bZ)`)));
         await bugChannel.send(this.generateSuccess(bug, msg.author, msg)).then(m => {
             m.react("✅");
             m.react("❌");
