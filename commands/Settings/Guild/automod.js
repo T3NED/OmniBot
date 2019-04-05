@@ -10,7 +10,7 @@ module.exports = class extends Command {
             aliases: ['setautomod'],
             cooldown: 10,
             permissionLevel: 6,
-            description: 'Set the Automod for the server.',
+            description: 'Set the Automod and the options for the server.',
             extendedHelp: 'No extended help available.',
             usage: '<toggle|show> [options:str]',
             subcommands: true,
