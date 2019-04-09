@@ -7,7 +7,8 @@
   "author": "Phunt05 <37057540+Phunt05@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node omni.js"
+    "start": "node omni.js",
+    "dev": "nodemon omni.js"
   },
   "dependencies": {
     "brawlstars": "^1.2.0",
@@ -19,5 +20,8 @@
     "mongodb": "^3.1.13",
     "os": "^0.1.1",
     "snekfetch": "^4.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   }
 }
