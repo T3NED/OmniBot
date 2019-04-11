@@ -1,6 +1,7 @@
 const {Command, Stopwatch, Type, util} = require("klasa");
 const {inspect} = require("util");
 const fetch = require("node-fetch");
+const Discord = require('discord.js');
 
 module.exports = class extends Command {
   constructor(...args) {
