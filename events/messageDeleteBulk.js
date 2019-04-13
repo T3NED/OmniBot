@@ -24,7 +24,6 @@ module.exports = class extends Event {
             channel: msg.channel,
             reason: reason
         }, msg.author);
-        // console.log(reason);
     }
 
 };
