@@ -7,6 +7,7 @@ module.exports = KlasaClient.defaultGuildSchema
   .add("log", folder => folder
     .add("channel", "textchannel")
     .add("enabled", "boolean", {default: false})
+    .add("case", "integer", {default: 0})
 
     // Options
     .add("kick", "boolean", {default: true})

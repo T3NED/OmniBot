@@ -10,11 +10,14 @@ module.exports = class extends Event {
         const logChannel = guild.channels.get(guild.settings.log.channel);
         if(!logChannel || !logChannel.postable) return;
 
+        const Case = guild.settings.log.case;
+        await guild.settings.update("log.case", Case + 1, guild);
+
         switch (option) {
             case "kick":
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
-                    `Kick | ${guild.name}`, 
+                    `Kick | Case #${guild.settings.log.case}`, 
                     {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${data.tag}\``,inline: true},
                     {name: 'Reason', value: data.reason}
@@ -23,7 +26,7 @@ module.exports = class extends Event {
             case "ban":
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
-                    `Ban | ${guild.name}`, 
+                    `Ban | Case #${guild.settings.log.case}`, 
                     {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${data.tag}\``,inline: true},
                     {name: 'Reason', value: data.reason}
@@ -32,7 +35,7 @@ module.exports = class extends Event {
             case "unban":
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
-                    `UnBan | ${guild.name}`, 
+                    `UnBan | Case #${guild.settings.log.case}`, 
                     {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${data.tag}\``,inline: true},
                     {name: 'Reason', value: data.reason}
@@ -41,7 +44,7 @@ module.exports = class extends Event {
             case "mute":
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
-                    `Mute | ${guild.name}`, 
+                    `Mute | Case #${guild.settings.log.case}`, 
                     {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${data.tag}\``,inline: true},
                     {name: 'Reason', value: data.reason}
@@ -50,7 +53,7 @@ module.exports = class extends Event {
             case "unmute":
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
-                    `UnMute | ${guild.name}`, 
+                    `UnMute | Case #${guild.settings.log.case}`, 
                     {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${data.tag}\``,inline: true},
                     {name: 'Reason', value: data.reason}
@@ -59,16 +62,16 @@ module.exports = class extends Event {
             case "msgDelete":
                 logChannel.send(this.generateEmbed(
                     '#0cf785',
-                    `Message Delete | ${guild.name}`,
+                    `Message Delete | Case #${guild.settings.log.case}`,
                     {name: 'Channel', value: data.channel, inline: true},
-                    {name: 'User', value: `\`${user.tag}\``,inline: true},
+                    {name: 'Author', value: `\`${user.tag}\``,inline: true},
                     data.attachment ? {name: "Content", value: data.content + `\n${data.attachment}`} : {name: 'Content', value: data.content}
                 ));
                 break;
             case "msgDeleteBulk":
                 logChannel.send(this.generateEmbed(
                     '#0cf785',
-                    `Purged | ${guild.name}`,
+                    `Purged | Case #${guild.settings.log.case}`,
                     {name: 'Amount', value: data.amount, inline: true},
                     {name: 'Channel', value: data.channel, inline: true},
                     {name: 'Staff', value: `\`${user.tag}\``,inline: true},
@@ -78,7 +81,9 @@ module.exports = class extends Event {
             case "msgUpdate":
                 logChannel.send(this.generateEmbed(
                     '#d1f442',
-                    `Message Edited | ${guild.name}`,
+                    `Message Edited | Case #${guild.settings.log.case}`,
+                    {name: 'Channel', value: data.channel, inline: true},
+                    {name: 'Author', value: user, inline: true},
                     {name: 'Old Message', value: data.oldMsg},
                     {name: 'New Message', value: data.newMsg}
                 ));
