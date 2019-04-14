@@ -18,8 +18,8 @@ module.exports = class extends Event {
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
                     `Kick | Case #${guild.settings.log.case}`, 
-                    {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
-                    {name: 'Staff', value: `\`${data.tag}\``,inline: true},
+                    {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
+                    {name: 'Staff', value: `\`${user.tag}\``, inline: true},
                     {name: 'Reason', value: data.reason}
                 ));
                 break;
@@ -27,8 +27,8 @@ module.exports = class extends Event {
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
                     `Ban | Case #${guild.settings.log.case}`, 
-                    {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
-                    {name: 'Staff', value: `\`${data.tag}\``,inline: true},
+                    {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
+                    {name: 'Staff', value: `\`${user.tag}\``, inline: true},
                     {name: 'Reason', value: data.reason}
                 ));
                 break;
@@ -36,8 +36,8 @@ module.exports = class extends Event {
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
                     `UnBan | Case #${guild.settings.log.case}`, 
-                    {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
-                    {name: 'Staff', value: `\`${data.tag}\``,inline: true},
+                    {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
+                    {name: 'Staff', value: `\`${user.tag}\``, inline: true},
                     {name: 'Reason', value: data.reason}
                 ));
                 break;
@@ -45,8 +45,8 @@ module.exports = class extends Event {
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
                     `Mute | Case #${guild.settings.log.case}`, 
-                    {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
-                    {name: 'Staff', value: `\`${data.tag}\``,inline: true},
+                    {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
+                    {name: 'Staff', value: `\`${user.tag}\``, inline: true},
                     {name: 'Reason', value: data.reason}
                 ));
                 break;
@@ -54,8 +54,8 @@ module.exports = class extends Event {
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
                     `UnMute | Case #${guild.settings.log.case}`, 
-                    {name: 'User', value: `\`${user.tag} (${user.id})\``, inline: true},
-                    {name: 'Staff', value: `\`${data.tag}\``,inline: true},
+                    {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
+                    {name: 'Staff', value: `\`${user.tag}\``, inline: true},
                     {name: 'Reason', value: data.reason}
                 ));
                 break;
@@ -64,7 +64,7 @@ module.exports = class extends Event {
                     '#0cf785',
                     `Message Delete | Case #${guild.settings.log.case}`,
                     {name: 'Channel', value: data.channel, inline: true},
-                    {name: 'Author', value: `\`${user.tag}\``,inline: true},
+                    {name: 'Author', value: `\`${user.tag}\``, inline: true},
                     data.attachment ? {name: "Content", value: data.content + `\n${data.attachment}`} : {name: 'Content', value: data.content}
                 ));
                 break;
@@ -74,7 +74,7 @@ module.exports = class extends Event {
                     `Purged | Case #${guild.settings.log.case}`,
                     {name: 'Amount', value: data.amount, inline: true},
                     {name: 'Channel', value: data.channel, inline: true},
-                    {name: 'Staff', value: `\`${user.tag}\``,inline: true},
+                    {name: 'Staff', value: `\`${user.tag}\``, inline: true},
                     {name: 'Reason', value: data.reason}
                 ));
                 break;

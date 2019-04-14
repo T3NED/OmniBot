@@ -13,7 +13,7 @@ module.exports = new PermissionLevels()
       guild,
       member
     }) =>
-    guild && member && member.roles.has(guild.settings.config.dj), {
+    guild && member && member.roles.has(guild.settings.music.dj), {
       fetch: true
     }
   )
@@ -25,7 +25,7 @@ module.exports = new PermissionLevels()
       guild,
       member
     }) =>
-    guild && member && member.roles.has(guild.settings.config.mod) || (member.permissions.has("BAN_MEMBERS") && member.permissions.has("KICK_MEMBERS")), {
+    guild && member && member.roles.has(guild.settings.roles.mod) || (member.permissions.has("BAN_MEMBERS") && member.permissions.has("KICK_MEMBERS")), {
       fetch: true
     }
   )
