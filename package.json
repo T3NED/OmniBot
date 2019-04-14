@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Multifunctional Discord Bot",
   "main": "omni.js",
-  "repository": "https://github.com/Omni-Discord-Bot/Omni.git",
+  "repository": "https://github.com/OmniBot/Omni.git",
   "author": "Phunt05 <37057540+Phunt05@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/omni.js",
-    "dev": "nodemon src/omni.js"
+    "start": "node main/omni.js",
+    "dev": "nodemon main/omni.js"
   },
   "dependencies": {
     "brawlstars": "^1.2.0",

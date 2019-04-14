@@ -77,10 +77,10 @@ module.exports = class extends Event {
                 break;
             case "msgUpdate":
                 logChannel.send(this.generateEmbed(
-                    '#dd2731',
+                    '#d1f442',
                     `Message Edited | ${guild.name}`,
-                    {name: 'Old Message', value: data.old, inline: true},
-                    {name: 'New Message', value: data.new, inline: true}
+                    {name: 'Old Message', value: data.oldMsg},
+                    {name: 'New Message', value: data.newMsg}
                 ));
                 break;
         }
@@ -94,7 +94,7 @@ module.exports = class extends Event {
 
         if(f1) embed.addField(f1.name, f1.value, f1.inline || false);
         if(f2) embed.addField(f2.name, f2.value, f2.inline || false);
-        if(f3.value) embed.addField(f3.name, f3.value, f3.inline || false);
+        if(f3) embed.addField(f3.name, f3.value, f3.inline || false);
         if(f4) embed.addField(f4.name, f4.value, f4.inline || false);
         if(f1.image) embed.setImage(f1.image);
 

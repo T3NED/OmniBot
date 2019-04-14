@@ -1,4 +1,4 @@
-const OmniClient = require("./lib/structures/OmniClient");
+const OmniClient = require("./utils/structures/OmniClient");
 const config = require("./config");
 
 new OmniClient({
