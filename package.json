@@ -7,8 +7,8 @@
   "author": "Phunt05 <37057540+Phunt05@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node omni.js",
-    "dev": "nodemon omni.js"
+    "start": "node src/omni.js",
+    "dev": "nodemon src/omni.js"
   },
   "dependencies": {
     "brawlstars": "^1.2.0",

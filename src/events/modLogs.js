@@ -11,7 +11,7 @@ module.exports = class extends Event {
         if(!logChannel || !logChannel.postable) return;
 
         switch (option) {
-            case "kick": 
+            case "kick":
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
                     `Kick | ${guild.name}`, 
@@ -20,7 +20,7 @@ module.exports = class extends Event {
                     {name: 'Reason', value: data.reason}
                 ));
                 break;
-            case "ban": 
+            case "ban":
                 logChannel.send(this.generateEmbed(
                     '#dd2731',
                     `Ban | ${guild.name}`, 
@@ -58,11 +58,11 @@ module.exports = class extends Event {
                 break;
             case "msgDelete":
                 logChannel.send(this.generateEmbed(
-                    '#dd2731',
-                    `Message Delete | ${guild.name}`, 
-                    {name: 'Channel', value: data.channel, inline: true, image: data.image},
+                    '#0cf785',
+                    `Message Delete | ${guild.name}`,
+                    {name: 'Channel', value: data.channel, inline: true},
                     {name: 'User', value: `\`${user.tag}\``,inline: true},
-                    {name: 'Content', value: data.content}
+                    data.attachment ? {name: "Content", value: data.content + `\n${data.attachment}`} : {name: 'Content', value: data.content}
                 ));
                 break;
             case "msgDeleteBulk":
@@ -94,7 +94,7 @@ module.exports = class extends Event {
 
         if(f1) embed.addField(f1.name, f1.value, f1.inline || false);
         if(f2) embed.addField(f2.name, f2.value, f2.inline || false);
-        if(f3) embed.addField(f3.name, f3.value, f3.inline || false);
+        if(f3.value) embed.addField(f3.name, f3.value, f3.inline || false);
         if(f4) embed.addField(f4.name, f4.value, f4.inline || false);
         if(f1.image) embed.setImage(f1.image);
 
