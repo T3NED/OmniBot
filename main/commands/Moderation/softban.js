@@ -11,12 +11,12 @@ module.exports = class extends Command {
             permissionLevel: 4,
             description: '',
             extendedHelp: 'No extended help available.',
-            usage: '<member:membername> [reason:string] [...]',
+            usage: '<member:membername> [days:integer] [reason:string] [...]',
             usageDelim: " "
         });
     }
 
-    async run(msg, [member, ...reason]) {
+    async run(msg, [member, days = 7, ...reason]) {
         if (member.id === this.client.user.id) return msg.send(this.generateFailed("You can't ban Omni."));
         if (member.id === msg.author.id) return msg.send(this.generateFailed("You can't ban yourself."));
 
@@ -25,13 +25,13 @@ module.exports = class extends Command {
 
         reason = reason.length > 0 ? reason.join(" ") : "No reason was provided";
         try {
-            await member.ban({reason: reason});   
+            await member.ban(days, reason);
         } catch (e) {
             return msg.send(this.generateFailed("I was unable to ban that member"));
         }
 
         this.client.emit("modLogs", msg.guild, "ban", {name: "ban", reason: reason, user: member.user}, msg.author);
-        return msg.send(this.generateSuccess(`Successfully banned ${member.user.tag}`));
+        return msg.send(this.generateSuccess(`Successfully banned ${member.user.tag} for ${days} days`));
     }
 
     generateSuccess(congrats) {
