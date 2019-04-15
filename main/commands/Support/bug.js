@@ -23,7 +23,7 @@ module.exports = class extends Command {
     }
 
     async run(msg, [...bug]) {
-        if(bug.length <= 10) {
+        if(bug[0].length <= 10) {
             return msg.channel.send(this.generateFailed(`${msg.author}, Please provide a valid bug. Bug must be more than 10 letters.`));
         }
         const bugChannel = this.client.channels.get(config.channels.support);

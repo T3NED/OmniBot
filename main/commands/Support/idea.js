@@ -13,7 +13,7 @@ module.exports = class extends Command {
             permissionLevel: 0,
             description: 'Suggest an idea for the bot',
             extendedHelp: 'No extended help available.',
-            usage: '<idea:str>',
+            usage: '<idea:str> [...]',
         });
 
         this.customizeResponse(
