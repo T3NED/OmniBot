@@ -11,23 +11,23 @@ module.exports = class extends Command {
             permissionLevel: 4,
             description: '',
             extendedHelp: 'No extended help available.',
-            usage: '<user:str> [reason:string] [...]',
+            usage: '<user:user> [reason:string] [...]',
             usageDelim: " "
         });
     }
 
     async run(msg, [user, ...reason]) {
-        if (user === this.client.user.id) return msg.send(this.generateFailed("Omni is not banned."));
-        if (user === msg.author.id) return msg.send(this.generateFailed("You are not banned"));
+        const bans = await msg.guild.fetchBans();
+        if (!bans.has(user.id)) return msg.send(this.generateFailed(`${user.tag} is not in the ban list of the server`));
 
         reason = reason.length > 0 ? reason.join(" ") : "No reason was provided";
         try {
             await msg.guild.members.unban(user, reason);
         } catch (e) {
-            return msg.send(this.generateFailed("This user is not in the ban list of the server"));
+            return msg.send(this.generateFailed(`There was an error while unbanning ${user.tag}`));
         }
 
-        this.client.emit("modLogs", msg.guild, "unban", {name: "unban", reason: reason, user: user}, msg.author);
+        this.client.emit("modLogs", msg.guild, "unban", {name: "ban", reason: reason, user: user}, msg.author);
         return msg.send(this.generateSuccess(`Successfully unbanned ${user.tag}`));
     }
 

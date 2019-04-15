@@ -34,7 +34,7 @@ module.exports = class extends Event {
                 break;
             case "unban":
                 logChannel.send(this.generateEmbed(
-                    '#dd2731',
+                    '#a1f913',
                     `UnBan | Case #${guild.settings.log.case}`, 
                     {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${user.tag}\``, inline: true},
@@ -52,7 +52,7 @@ module.exports = class extends Event {
                 break;
             case "unmute":
                 logChannel.send(this.generateEmbed(
-                    '#dd2731',
+                    '#a1f913',
                     `UnMute | Case #${guild.settings.log.case}`, 
                     {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${user.tag}\``, inline: true},
