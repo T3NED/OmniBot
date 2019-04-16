@@ -26,11 +26,14 @@ module.exports = class extends Command {
         if(idea[0].length <= 10) {
             return msg.channel.send(this.generateFailed(`${msg.author}, Please provide a valid idea. Idea must be more than 10 letters.`));
         }
+        let image = msg.attachments.size > 0 ? await this.checkAttachement(msg.attachments.array()[0].url) : null;
         const ideaChannel = this.client.channels.get(config.channels.support);
-        msg.delete().then(msg.channel.send(this.generateConfirm(`Thank you ${msg.author}, your suggestion has been sent to my [Support server](https://discord.gg/TutA5bZ)`)));
-        await ideaChannel.send(this.generateSuccess(idea, msg.author, msg)).then(m => {
-            m.react("✅");
-            m.react("❌");
+        const check = this.client.emojis.get("537574237452369920");
+        const cross = this.client.emojis.get("537574237267951617");
+        msg.channel.send(this.generateConfirm(`Thank you ${msg.author}, your suggestion has been sent to my [Support server](https://discord.gg/TutA5bZ)`));
+        await ideaChannel.send(this.generateSuccess(idea, msg.author, msg, image)).then(m => {
+            m.react(check);
+            m.react(cross);
         });
     }
 
@@ -41,13 +44,14 @@ module.exports = class extends Command {
         return embed;
     }
 
-    generateSuccess(message, author, orgMsg) {
+    generateSuccess(message, author, orgMsg, image) {
         const embed = new MessageEmbed()
             .setAuthor(`Idea | ${author.tag}`, author.displayAvatarURL())
             .setFooter(`To send Idea: ${orgMsg.guild.settings.prefix}idea <idea>`)
             .setThumbnail(author.displayAvatarURL())
             .setColor("GREEN")
-            .setDescription(message);
+            .setDescription(message)
+            .setImage(image);
         return embed;
     }
 
@@ -56,6 +60,12 @@ module.exports = class extends Command {
         .setColor("RED")
         .setDescription(message);
         return embed;
+    }
+
+    checkAttachement(url) {
+        const isImage = /\.(jpe?g|png|gif)$/i.test(url);
+        if (!isImage) return null;
+        return url;
     }
 
 };

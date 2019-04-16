@@ -1,4 +1,5 @@
 const {Event} = require("klasa");
+const { presence } = require("../config.js");
 
 module.exports = class extends Event {
   constructor(...args) {
@@ -9,9 +10,9 @@ module.exports = class extends Event {
   }
 
   run(...params) {
-    const settings = this.client.settings.presence;
+    const settings = presence;
     this.client.user.setPresence({
-      activity: {name: settings.activity, type: settings.type},
+      activity: {name: settings.name, type: settings.type},
       status: settings.status
     });
   }

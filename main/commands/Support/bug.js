@@ -27,10 +27,13 @@ module.exports = class extends Command {
             return msg.channel.send(this.generateFailed(`${msg.author}, Please provide a valid bug. Bug must be more than 10 letters.`));
         }
         const bugChannel = this.client.channels.get(config.channels.support);
-        msg.delete().then(msg.channel.send(this.generateConfirm(`Thank you ${msg.author}, Bug has been reported to my [Support server](https://discord.gg/TutA5bZ)`)));
-        await bugChannel.send(this.generateSuccess(bug, msg.author, msg)).then(m => {
-            m.react("✅");
-            m.react("❌");
+        const check = this.client.emojis.get("537574237452369920");
+        const cross = this.client.emojis.get("537574237267951617");
+        let image = msg.attachments.size > 0 ? await this.checkAttachement(msg.attachments.array()[0].url) : null;
+        msg.channel.send(this.generateConfirm(`Thank you ${msg.author}, Bug has been reported to my [Support server](https://discord.gg/TutA5bZ)`));
+        await bugChannel.send(this.generateSuccess(bug, msg.author, msg, image)).then(m => {
+            m.react(check);
+            m.react(cross);
         });
     }
 
@@ -41,13 +44,14 @@ module.exports = class extends Command {
         return embed;
     }
 
-    generateSuccess(message, author, orgMsg) {
+    generateSuccess(message, author, orgMsg, image) {
         const embed = new MessageEmbed()
             .setAuthor(`Bug | ${author.tag}`, author.displayAvatarURL())
             .setFooter(`To send bug: ${orgMsg.guild.settings.prefix}bug <bug>`)
             .setThumbnail(author.displayAvatarURL())
             .setColor("RED")
-            .setDescription(message);
+            .setDescription(message)
+            .setImage(image);
         return embed;
     }
 
@@ -56,6 +60,12 @@ module.exports = class extends Command {
         .setColor("RED")
         .setDescription(message);
         return embed;
+    }
+
+    checkAttachement(url) {
+        const isImage = /\.(jpe?g|png|gif)$/i.test(url);
+        if (!isImage) return null;
+        return url;
     }
 
 };
