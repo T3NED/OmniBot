@@ -191,7 +191,7 @@ module.exports = class extends Command {
   }
 
   async getHaste(result) {
-    const res = await fetch("https://hastebin.com/documents", {
+    const res = await fetch("https://paste.ionadev.ml/documents", {
       method: "POST",
       body: result,
       headers: {"Content-Type": "application/json"}
@@ -201,6 +201,6 @@ module.exports = class extends Command {
         Error.captureStackTrace(e);
         return e;
       });
-    return `https://hastebin.com/${res.key}.js`;
+    return `https://paste.ionadev.ml/${res.key}.js`;
   }
 };
