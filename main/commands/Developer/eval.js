@@ -29,7 +29,7 @@ module.exports = class extends Command {
 
     if (msg.flags.silent) {
       if (!success && result && result.stack)
-        this.client.emit("error", result.stack);
+        {this.client.emit("error", result.stack);}
       return null;
     }
 
@@ -49,9 +49,9 @@ module.exports = class extends Command {
     switch (options.sendAs) {
       case "file": {
         if (msg.channel.attachable)
-          return msg.send(`**Type:**${footer}\n\n${time}`, {
+          {return msg.send(`**Type:**${footer}\n\n${time}`, {
             files: [{attachment: Buffer.from(result), name: "output.txt"}]
-          });
+          });}
         await this.getTypeOutput(msg, options);
         return this.handleMessage(msg, options, {
           success,
@@ -63,11 +63,11 @@ module.exports = class extends Command {
       case "haste":
       case "hastebin": {
         if (!options.url)
-          options.url = await this.getHaste(result).catch(() => null);
+          {options.url = await this.getHaste(result).catch(() => null);}
         if (options.url)
-          return msg.sendMessage(
+          {return msg.sendMessage(
             `**Output:**\n${options.url}\n\n**Type:**${footer}\n${time}`
-          );
+          );}
         options.hastebinUnavailable = true;
         await this.getTypeOutput(msg, options);
         return this.handleMessage(msg, options, {
