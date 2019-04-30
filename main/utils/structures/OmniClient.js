@@ -12,6 +12,7 @@ const defaultUserSchema = require("./schemas/defaultUserSchema");
 
 class OmniClient extends Client {
   constructor(options) {
+
     super({
       ...options,
       permissionLevels,
@@ -19,12 +20,11 @@ class OmniClient extends Client {
       defaultUserSchema,
       defaultGuildSchema
     });
+
     this.config = config;
-    //OmniFetch
     this.fetch = new OmniFetch();
-    //BrawlStars API
     this.brawl = new BrawlStars.Client({token: config.brawl_stars_api});
-    //Commands Ran
+    this.music = new Map();
     this.health = Object.seal({
       commands: {
         temp: {
@@ -37,7 +37,6 @@ class OmniClient extends Client {
         })
       }
     });
-    //Icons
     this.icons = icons;
   }
 }

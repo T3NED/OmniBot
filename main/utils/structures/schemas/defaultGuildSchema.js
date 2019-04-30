@@ -31,6 +31,7 @@ module.exports = KlasaClient.defaultGuildSchema
   // Roles
   .add("roles", folder => folder
     .add("mod", "role")
+    .add("muted", "role")
   )
 
   // Autorole

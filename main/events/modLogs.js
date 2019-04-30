@@ -1,4 +1,4 @@
-const { Event } = require('klasa');
+const { Event, Duration } = require('klasa');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = class extends Event {
@@ -47,6 +47,7 @@ module.exports = class extends Event {
                     `Mute | Case #${guild.settings.log.case}`, 
                     {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${user.tag}\``, inline: true},
+                    {name: 'For', value: data.time ? Duration.toNow(data.time) : "Until someone unmute's"},
                     {name: 'Reason', value: data.reason}
                 ));
                 break;
