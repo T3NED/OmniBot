@@ -6,7 +6,7 @@ module.exports = class extends Command {
         super(...args, {
             enabled: true,
             runIn: ['text'],
-            aliases: [],
+            aliases: ['disconnect'],
             cooldown: 5,
             permissionLevel: 0,
             description: '',
