@@ -1,6 +1,5 @@
-const { Command } = require('klasa');
+const { Command, RichDisplay } = require('klasa');
 const { MessageEmbed } = require('discord.js');
-const { RichDisplay } = require('klasa');
 
 module.exports = class extends Command {
 
