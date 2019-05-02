@@ -1,5 +1,5 @@
 const { Command } = require("klasa");
-const { MessageEmbed, VoiceChannel, StreamDispatcher } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const search = require("yt-search");
 const parseMs = require("parse-ms");
