@@ -56,6 +56,6 @@ yarn
 | [brawlapi.cf](https://brawlapi.cf) 	| Brawl Stars Unofficial API 	|
 
 ## Authors
-* **[Phunt](https://github.com/Phunt05)**
-* **[iona Dev](https://github.com/ionadev)**
+* **[Piyush Choubey](https://github.com/piyushc0)**
+* **[Piyush Bhangale](https://github.com/officialpiyush)**
 * **[Anish Shobith](https://github.com/Anish-Shobith)**
