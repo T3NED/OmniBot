@@ -1,5 +1,6 @@
 const { Command, RichDisplay } = require('klasa');
 const { MessageEmbed } = require('discord.js');
+const parseMs = require('parse-ms');
 
 module.exports = class extends Command {
 
@@ -7,7 +8,7 @@ module.exports = class extends Command {
         super(...args, {
             enabled: true,
             runIn: ['text'],
-            aliases: ['np', 'current'],
+            aliases: ['q'],
             cooldown: 5,
             permissionLevel: 0,
             description: '',
@@ -18,27 +19,35 @@ module.exports = class extends Command {
     async run(msg) {
         let fetched = this.client.music.get(msg.guild.id);
         if (!fetched) return msg.channel.send("_Nothing is playing in the server_");
-        
         let queue = fetched.queue;
-        let nowPlaying = queue[0];
+        let length = 0;
+        queue.forEach(s => {
+            length += (s.Ln);
+        });
 
-        if (queue.length <= 1) {
-            let resp = `🎧__*Now Playing*__\n[${nowPlaying.songTitle}](${nowPlaying.url}) \`Requested By: ${nowPlaying.requester.tag}\``;
-            return msg.channel.send(this.queueEmbed(msg, resp));
-        } else {
-            let resp = `🎧__*Now Playing*__\n[${nowPlaying.songTitle}](${nowPlaying.url}) \`Requested By: ${nowPlaying.requester.tag}\`\n\n🎤 __*Up Next*__\n`;
-            for(let i = 1; i <queue.length; i++) {
-                resp += `\`${i}\`. [${queue[i].songTitle}](${queue[i].url}) \`Requested By: ${queue[i].requester.tag}\`\n`;
-            }
-            return msg.channel.send(this.queueEmbed(msg, resp));
+        const pages = new RichDisplay(new MessageEmbed()
+            .setColor("#efd22d")
+            .setAuthor(`Queue for ${msg.guild.name}`)
+            .setTitle(`${queue.length} Songs in Queue | Length: ${this.fmtTime(length)}`)
+        );
+
+        for (let i = 0; i < queue.length; i += 10) {
+            const current = queue.slice(i, i + 10);
+            pages.setFooterPrefix("Page ");
+            pages.addPage(e => e.setDescription(current.map(c => `\`${c.id}.\` [${c.songTitle}](${c.url}) \`${this.fmtTime(c.Ln)} Requested By: ${c.requester.tag}\``).join(`\n\n`)));
         }
+        
+        pages.run(await msg.send(`_**Getting the queue for the server**_`), {
+            time: 100000,
+            filter: (reaction, user) => user = msg.author
+        });
     }
 
-    queueEmbed(msg, response) {
-        return new MessageEmbed()
-        .setColor("#f4b413")
-        .setAuthor(`Queue for ${msg.guild.name}`, msg.guild.iconURL)
-        .setDescription(response);
+    fmtTime(ms) {
+        let parsed = parseMs(ms);
+        return parsed.hours ?
+                `${parsed.hours.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}:${parsed.minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}:${parsed.seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`:
+                parsed.minutes ? `${parsed.minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}:${parsed.seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`:
+                `00:${parsed.seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`;
     }
-
 };

@@ -10,7 +10,7 @@ module.exports = class extends Command {
         super(...args, {
             enabled: true,
             runIn: ['text'],
-            requiredPermissions: [],
+            aliases: ['p'],
             cooldown: 5,
             description: '',
             extendedHelp: 'No extended help available.',
@@ -43,7 +43,8 @@ module.exports = class extends Command {
                     url: info.video_url,
                     Ln: ms,
                     ChannelName: info.author.name,
-                    thumb: info.thumbnail_url
+                    thumb: info.thumbnail_url,
+                    id: data.queue.length ? data.queue.length + 1: 1
                 });
 
                 if (!data.dispatcher) {
@@ -71,7 +72,8 @@ module.exports = class extends Command {
                 url: info.video_url,
                 Ln: ms,
                 ChannelName: info.author.name,
-                thumb: info.thumbnail_url
+                thumb: info.thumbnail_url,
+                id: data.queue.length ? data.queue.length + 1: 1
             });
 
             if (!data.dispatcher) {
@@ -99,7 +101,8 @@ module.exports = class extends Command {
         
         data.dispatcher.guildId = data.guildId;
 
-        data.dispatcher.on("error", async () => {
+        data.dispatcher.on("error", async (err) => {
+            console.error(err);
             this.client.music.delete(data.dispatcher.guildId);
             let { channel } = msg.guild.me.voice;
             if (channel) channel.leave();

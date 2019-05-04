@@ -11,6 +11,7 @@
     "dev": "nodemon main/omni.js"
   },
   "dependencies": {
+    "array-move": "^2.1.0",
     "brawlstars": "^1.2.0",
     "discord.js": "discordjs/discord.js",
     "eslint": "^5.15.3",
