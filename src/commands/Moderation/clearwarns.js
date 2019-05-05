@@ -10,7 +10,7 @@ module.exports = class extends Command {
             aliases: ['cw'],
             cooldown: 10,
             permissionLevel: 4,
-            description: '',
+            description: 'Clear the warns of a specific member',
             extendedHelp: 'No extended help available.',
             usage: '<member:membername>'
         });

@@ -9,7 +9,7 @@ module.exports = class extends Command {
             aliases: ['next'],
             cooldown: 5,
             permissionLevel: 0,
-            description: '',
+            description: 'Skip the track',
             extendedHelp: 'No extended help available.',
         });
     }

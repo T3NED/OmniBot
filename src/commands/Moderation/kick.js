@@ -9,7 +9,7 @@ module.exports = class extends Command {
             requiredPermissions: ["KICK_MEMBERS"],
             cooldown: 10,
             permissionLevel: 4,
-            description: '',
+            description: 'Kick someone from the guild',
             extendedHelp: 'No extended help available.',
             usage: '<member:membername> [reason:string] [...]',
             usageDelim: " "

@@ -9,7 +9,7 @@ module.exports = class extends Command {
             requiredPermissions: ["BAN_MEMBERS"],
             cooldown: 10,
             permissionLevel: 4,
-            description: '',
+            description: 'Bans a user and then unbans the user after deleting the messages for the days provided',
             extendedHelp: 'No extended help available.',
             usage: '<member:membername> [days:integer] [reason:string] [...]',
             usageDelim: " "

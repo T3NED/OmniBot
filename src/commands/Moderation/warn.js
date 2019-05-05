@@ -9,7 +9,7 @@ module.exports = class extends Command {
             requiredPermissions: ["KICK_MEMBERS"],
             cooldown: 10,
             permissionLevel: 4,
-            description: '',
+            description: 'Warn someone. If warns is greater than 3 they will recieve a mute instead',
             extendedHelp: 'No extended help available.',
             usage: '<member:membername> [reason:string] [...]',
             usageDelim: " "

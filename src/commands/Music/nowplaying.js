@@ -11,7 +11,7 @@ module.exports = class extends Command {
             aliases: ['np', 'current'],
             cooldown: 5,
             permissionLevel: 0,
-            description: '',
+            description: 'Shows the info of current playing song',
             extendedHelp: 'No extended help available.',
         });
     }

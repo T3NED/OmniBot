@@ -11,7 +11,7 @@ module.exports = class extends Command {
             aliases: ['q'],
             cooldown: 5,
             permissionLevel: 0,
-            description: '',
+            description: 'Shows the queue for the server',
             extendedHelp: 'No extended help available.',
         });
     }

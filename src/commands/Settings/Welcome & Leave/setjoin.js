@@ -11,7 +11,7 @@ module.exports = class extends Command {
             cooldown: 10,
             permissionLevel: 6,
             description: 'Set the welcome message and channel to greet when user joins',
-            extendedHelp: 'No extended help available.',
+            extendedHelp: "You can insert some placeholders:\n{mention} - Mention the member\n{tag} - The tag of the user e.g: Piyush#7142\n{user} - The member's name who joined.\n{guild} - The name of your server.\n{mCount} - Member Count of the server.",
             usage: '<msg|channel|disable> [channel:channelname] [message:str] [...]',
             usageDelim: ' ',
             subcommands: true,

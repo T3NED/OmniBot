@@ -9,7 +9,7 @@ module.exports = class extends Command {
             requiredPermissions: ["MANAGE_ROLES"],
             cooldown: 10,
             permissionLevel: 4,
-            description: '',
+            description: 'Mute someone for specific amount of time',
             extendedHelp: 'No extended help available.',
             usage: '<member:membername> [till:time] [reason:...string]',
             usageDelim: " "

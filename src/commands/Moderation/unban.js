@@ -9,7 +9,7 @@ module.exports = class extends Command {
             requiredPermissions: ["BAN_MEMBERS"],
             cooldown: 10,
             permissionLevel: 4,
-            description: '',
+            description: 'Unbans the banned user',
             extendedHelp: 'No extended help available.',
             usage: '<user:user> [reason:string] [...]',
             usageDelim: " "

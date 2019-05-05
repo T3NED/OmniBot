@@ -10,7 +10,7 @@ module.exports = class extends Command {
             aliases: ['cc', 'resetcase'],
             cooldown: 10,
             permissionLevel: 6,
-            description: '',
+            description: 'Reset the case to 0',
             extendedHelp: 'No extended help available.',
             usage: ''
         });

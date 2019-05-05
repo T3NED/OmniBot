@@ -12,7 +12,7 @@ module.exports = class extends Command {
             runIn: ['text'],
             aliases: ['p'],
             cooldown: 5,
-            description: '',
+            description: 'Play a song or track',
             extendedHelp: 'No extended help available.',
             usage: '<song:...string>',
         });

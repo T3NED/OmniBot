@@ -9,7 +9,7 @@ module.exports = class extends Command {
             requiredPermissions: ["MANAGE_ROLES"],
             cooldown: 10,
             permissionLevel: 4,
-            description: '',
+            description: 'Unmute the mutee',
             extendedHelp: 'No extended help available.',
             usage: '<member:membername> [reason:string] [...]',
             usageDelim: " "

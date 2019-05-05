@@ -8,10 +8,10 @@ module.exports = class extends Command {
         super(...args, {
             enabled: true,
             runIn: ['text'],
-            aliases: [],
+            aliases: ["si"],
             cooldown: 2,
             permissionLevel: 0,
-            description: 'ser',
+            description: 'Brief Information of the server',
             extendedHelp: 'No extended help available.'
         });
     }

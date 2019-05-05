@@ -9,7 +9,7 @@ module.exports = class extends Command {
             aliases: ['disconnect'],
             cooldown: 5,
             permissionLevel: 0,
-            description: '',
+            description: 'Leaves the voice channel',
             extendedHelp: 'No extended help available.',
         });
     }
