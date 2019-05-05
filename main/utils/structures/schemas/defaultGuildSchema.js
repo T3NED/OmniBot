@@ -1,4 +1,4 @@
-const {KlasaClient} = require("klasa");
+const { KlasaClient } = require("klasa");
 
 module.exports = KlasaClient.defaultGuildSchema
   

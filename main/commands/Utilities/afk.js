@@ -7,7 +7,7 @@ module.exports = class extends Command {
       cooldown: 5,
       permissionLevel: 0,
       requiredPermissions: ["USE_EXTERNAL_EMOJIS"],
-      description: "Set AFK",
+      description: "Set AFK status to you",
       usage: "[reason:string]",
       extendedHelp: "No extended help available."
     });

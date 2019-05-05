@@ -22,5 +22,4 @@ module.exports = class extends Event {
             .replace(/{tag}/g, member.user.tag)
             .replace(/{mCount}/g, member.guild.memberCount);
     }
-
 };

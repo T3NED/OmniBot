@@ -31,12 +31,12 @@
 </a>
 <br>
 <br>
-<strong><i>Omni-Multifunctional Bot</i></strong>
+<strong><i>OmniBot (Your best companion for Discord)</i></strong>
 <br>
 </div>
 
 ## Installation
-We don't recommend Self Hosting Omni. Instead use the actual bot ([Invite](https://discordapp.com/api/oauth2/authorize?client_id=522003382139879438&permissions=8&scope=bot)). If you face any problem while self hosting Omni then it is your personal problem. No one from Omni team will help you in that case. It is on github for transparency.
+We don't recommend Self Hosting Omni. Instead use the actual bot ([Invite](https://discordapp.com/api/oauth2/authorize?client_id=522003382139879438&permissions=2134207679&scope=bot)). If you face any problem while self hosting Omni then it is your personal problem. No one from Omni team will help you in that case. It is on github for transparency.
 
 Although you can run the bot locally for development purposes. Simply install the requirements.
 Run this command.

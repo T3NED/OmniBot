@@ -52,5 +52,4 @@ module.exports = class extends Command {
         return msg.sendEmbed(uEmbed);
 
     }
-
 };

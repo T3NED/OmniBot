@@ -67,5 +67,4 @@ module.exports = class extends Command {
         if (!isImage) return null;
         return url;
     }
-
 };

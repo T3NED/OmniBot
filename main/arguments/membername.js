@@ -44,5 +44,4 @@ module.exports = class extends Argument {
 			default: throw `Found multiple matches: \`${querySearch.map(user => user.tag).join('`, `')}\``;
 		}
 	}
-
 };

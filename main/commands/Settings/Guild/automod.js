@@ -80,5 +80,4 @@ module.exports = class extends Command {
             .addField("Invite", check[automod.filter.invite], true);
         return embed;
     }
-
 };

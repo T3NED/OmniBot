@@ -1,4 +1,4 @@
-const {Finalizer} = require("klasa");
+const { Finalizer } = require("klasa");
 
 module.exports = class extends Finalizer {
   async run(msg) {

@@ -38,5 +38,4 @@ module.exports = class extends Argument {
 			default: throw `Found multiple matches: \`${querySearch.map(channel => channel.name).join('`, `')}\``;
 		}
 	}
-
 };

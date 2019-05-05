@@ -44,5 +44,4 @@ module.exports = class extends Command {
 
         return msg.channel.send(embed);
     }
-
 };

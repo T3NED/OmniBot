@@ -49,7 +49,6 @@ module.exports = class extends Command {
         const embed = new MessageEmbed()
         .setColor("GREEN")
         .setDescription(congrats);
-    
         return embed;
     }
 
@@ -57,7 +56,6 @@ module.exports = class extends Command {
         const embed = new MessageEmbed()
         .setColor("RED")
         .setDescription(failed);
-    
         return embed;
     }
 };

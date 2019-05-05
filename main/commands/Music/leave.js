@@ -24,5 +24,4 @@ module.exports = class extends Command {
         if (vc) await vc.leave();
         msg.channel.send("_🛑Stopped all the music and disconnected from the voice channel_");
     }
-
 };

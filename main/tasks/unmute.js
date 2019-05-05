@@ -10,5 +10,4 @@ module.exports = class extends Task {
         await member.roles.remove(Guild.settings.roles.muted);
         this.client.emit("modLogs", Guild, "unmute", {name: "mute", reason: "Time's up", user: member.user}, this.client.user);
     }
-
 };

@@ -60,5 +60,4 @@ module.exports = class extends Monitor {
     init() {
         this.prefixMention = new RegExp(`^<@!?${this.client.user.id}>`);
     }
-
 };

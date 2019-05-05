@@ -7,8 +7,7 @@ module.exports = class extends Monitor {
 
   async run(msg) {
     const {guild, channel, author} = msg;
-    if (!guild || !channel.postable || author.id === this.client.user.id)
-      return;
+    if (!guild || !channel.postable || author.id === this.client.user.id) return;
     if (msg.mentions.users.size) {
       const mentioned = msg.mentions.users.first();
       if (mentioned.settings.afk.afk) {

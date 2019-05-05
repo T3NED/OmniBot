@@ -21,5 +21,4 @@ module.exports = class extends Event {
             attachment: msg.attachments.size > 0 ? msg.attachments.array()[0].url : ""
         }, msg.author);
     }
-
 };

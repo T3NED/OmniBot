@@ -2,21 +2,33 @@
   "name": "omni",
   "version": "1.0.0",
   "description": "Multifunctional Discord Bot",
-  "main": "omni.js",
-  "repository": "https://github.com/OmniBot/Omni.git",
-  "author": "Phunt05 <37057540+Phunt05@users.noreply.github.com>",
+  "main": "main/omni.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmniDiscord/OmniBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OmniDiscord/OmniBot/issues"
+  },
+  "keywords": [
+    "omnibot",
+    "omni",
+    "omnidiscord",
+    "klasa",
+    "discord",
+    "bot"
+  ],
+  "author": "Piyush Choubey",
   "license": "MIT",
   "scripts": {
     "dev": "node main/omni.js"
   },
   "dependencies": {
-    "array-move": "^2.1.0",
     "brawlstars": "^1.2.0",
     "discord.js": "discordjs/discord.js",
     "eslint": "^5.15.3",
     "ffmpeg-binaries": "^4.0.0",
     "klasa": "dirigeants/klasa",
-    "klasa-functions": "KlasaCommunityPlugins/functions",
     "klasa-member-gateway": "dirigeants/klasa-member-gateway",
     "moment": "^2.24.0",
     "mongodb": "^3.1.13",

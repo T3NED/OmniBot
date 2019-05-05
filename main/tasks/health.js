@@ -1,4 +1,4 @@
-const {Task} = require("klasa");
+const { Task } = require("klasa");
 
 module.exports = class extends Task {
   async run() {

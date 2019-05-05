@@ -87,5 +87,4 @@ module.exports = class extends Command {
             .setDescription(message);
         return embed;
     }
-
 };

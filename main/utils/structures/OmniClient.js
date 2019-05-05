@@ -1,4 +1,4 @@
-const {Client} = require("klasa");
+const { Client } = require("klasa");
 const OmniFetch = require("./OmniFetch");
 const BrawlStars = require("brawlstars");
 const config = require("../../config");

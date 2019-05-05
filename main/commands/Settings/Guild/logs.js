@@ -81,5 +81,4 @@ module.exports = class extends Command {
             return msg.send(this.generateSuccess(`**${msg.author}, ${key} logs are now enabled**`));
         }
     }
-
 };

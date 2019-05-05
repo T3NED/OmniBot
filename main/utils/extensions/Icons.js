@@ -1,4 +1,4 @@
-// Emojis are exported from here
+// Emojis are exported from here (Better use)
 
 module.exports = {
 

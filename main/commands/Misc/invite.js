@@ -33,5 +33,4 @@ module.exports = class extends Command {
 	async init() {
 		if (this.client.application && !this.client.application.botPublic) this.permissionLevel = 0;
 	}
-
 };

@@ -72,5 +72,4 @@ module.exports = class extends Command {
             .addField("Bot", msg.guild.roles.get(role_bot) || "Not Set");
         return embed;
     }
-
 };

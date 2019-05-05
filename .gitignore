@@ -54,18 +54,18 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+# Dotenv environment variables file
 .env
 
-# next.js build output
+# Next.js build output
 .next
 
-# config file
+# Config file
 config.json
 config.js
 
-# yarn lock
+# Yarn lock
 yarn.lock
 
-#vscode user settings
+# VS Code user settings
 .vscode

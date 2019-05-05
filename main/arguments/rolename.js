@@ -35,5 +35,4 @@ module.exports = class extends Argument {
 			default: throw `Found multiple matches: \`${querySearch.map(role => role.name).join('`, `')}\``;
 		}
 	}
-
 };

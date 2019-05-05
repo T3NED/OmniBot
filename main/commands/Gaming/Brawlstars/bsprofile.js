@@ -115,5 +115,4 @@ module.exports = class extends Command {
             return tag;
         }
     }
-
 };

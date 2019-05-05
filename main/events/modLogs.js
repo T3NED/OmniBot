@@ -116,5 +116,4 @@ module.exports = class extends Event {
 
         return embed;
     }
-
 };

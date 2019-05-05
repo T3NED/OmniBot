@@ -35,5 +35,4 @@ module.exports = class extends Command {
             return msg.channel.send(`_Successfully voted! (${fetched.queue[0].voteSkips.length}/${count}) votes._`);
         }
     }
-
 };

@@ -27,5 +27,4 @@ module.exports = class extends Monitor {
             await this.client.emit("modLogs", msg.guild, "warns", {name: "warn", user: msg.author, warns: warns + 1, reason: "Automodding (`Invite Link`)"}, this.client.user);
         }
     }
-
 };

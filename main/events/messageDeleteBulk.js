@@ -25,5 +25,4 @@ module.exports = class extends Event {
             reason: reason
         }, msg.author);
     }
-
 };

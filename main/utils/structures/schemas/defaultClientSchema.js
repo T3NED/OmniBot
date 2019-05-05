@@ -1,4 +1,4 @@
-const {KlasaClient} = require("klasa");
+const { KlasaClient } = require("klasa");
 const config = require("../../../config.js");
 
 module.exports = KlasaClient.defaultClientSchema
