@@ -7,8 +7,7 @@
   "author": "Phunt05 <37057540+Phunt05@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node main/omni.js",
-    "dev": "nodemon main/omni.js"
+    "dev": "node main/omni.js"
   },
   "dependencies": {
     "array-move": "^2.1.0",
