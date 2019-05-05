@@ -2,7 +2,7 @@
   "name": "omni",
   "version": "1.0.0",
   "description": "Multifunctional Discord Bot",
-  "main": "main/omni.js",
+  "main": "cd main && node omni.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OmniDiscord/OmniBot.git"
@@ -21,7 +21,7 @@
   "author": "Piyush Choubey",
   "license": "MIT",
   "scripts": {
-    "dev": "node main/omni.js"
+    "dev": "cd main && node omni.js"
   },
   "dependencies": {
     "brawlstars": "^1.2.0",
