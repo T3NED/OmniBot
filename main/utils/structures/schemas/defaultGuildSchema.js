@@ -1,5 +1,4 @@
 const {KlasaClient} = require("klasa");
-const config = require("../../../config.json");
 
 module.exports = KlasaClient.defaultGuildSchema
   
@@ -14,17 +13,16 @@ module.exports = KlasaClient.defaultGuildSchema
     .add("ban", "boolean", {default: true})
     .add("message", "boolean", {default: true})
     .add("mute", "boolean", {default: true})
+    .add("warn", "boolean", {default: true})
   )
 
   // Automod
   .add("automod", folder => folder
     .add("enabled", "boolean", {default: false})
     .add("filter", filter => filter
-      .add("spam", "boolean", {default: true})
-      .add("massemoji", "boolean", {default: true})
-      .add("dehoist", "boolean", {default: false})
+      .add("spam", "boolean", {default: false})
+      .add("words", "boolean", {default: false})
       .add("invite", "boolean", {default: false})
-      .add("links", "boolean", {default: false})
     )
   )
 

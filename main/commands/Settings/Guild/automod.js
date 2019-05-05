@@ -76,10 +76,8 @@ module.exports = class extends Command {
             .setAuthor(`Automod Settings | ${msg.guild.name}`)
             .addField("Automod", check[automod.enabled], true)
             .addField("Spam", check[automod.filter.spam], true)
-            .addField("Mass Emoji", check[automod.filter.massemoji], true)
-            .addField("Dehoist", check[automod.filter.dehoist], true)
-            .addField("Invite", check[automod.filter.invite], true)
-            .addField("Links", check[automod.filter.links], true);
+            .addField("Words", check[automod.filter.words], true)
+            .addField("Invite", check[automod.filter.invite], true);
         return embed;
     }
 

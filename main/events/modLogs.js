@@ -43,7 +43,7 @@ module.exports = class extends Event {
                 break;
             case "mute":
                 logChannel.send(this.generateEmbed(
-                    '#dd2731',
+                    '#f4b413',
                     `Mute | Case #${guild.settings.log.case}`, 
                     {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${user.tag}\``, inline: true},
@@ -58,6 +58,16 @@ module.exports = class extends Event {
                     {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
                     {name: 'Staff', value: `\`${user.tag}\``, inline: true},
                     {name: 'Reason', value: data.reason}
+                ));
+                break;
+            case "warns":
+                logChannel.send(this.generateEmbed(
+                    '#f4b413',
+                    `Warn | Case #${guild.settings.log.case}`,
+                    {name: 'User', value: `\`${data.user.tag} (${data.user.id})\``, inline: true},
+                    {name: 'Staff', value: `\`${user.tag}\``, inline: true},
+                    {name: 'Warns', value: `\`${data.warns}\``},
+                    {name: 'Reason', value: data.reason }
                 ));
                 break;
             case "msgDelete":

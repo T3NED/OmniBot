@@ -18,6 +18,7 @@
     "ffmpeg-binaries": "^4.0.0",
     "klasa": "dirigeants/klasa",
     "klasa-functions": "KlasaCommunityPlugins/functions",
+    "klasa-member-gateway": "dirigeants/klasa-member-gateway",
     "moment": "^2.24.0",
     "mongodb": "^3.1.13",
     "opusscript": "^0.0.6",
