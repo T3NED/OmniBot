@@ -11,7 +11,8 @@ module.exports = {
 
   // Channels
     channels: {
-    support: ""
+    support: "",
+    bot_logs: ""
   },
 
   // Database

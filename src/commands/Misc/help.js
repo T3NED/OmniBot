@@ -94,4 +94,10 @@ module.exports = class extends Command {
         return commands;
     }
 
+    generateEmbed(description) {
+        return new MessageEmbed()
+        .setColor("ORANGE")
+        .setDescription(description);
+    }
+
 };
