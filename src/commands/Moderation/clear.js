@@ -32,4 +32,12 @@ module.exports = class extends Command {
 
     }
 
+    getFiltered(msg, option, user) {
+        switch (option) {
+            case "invite" || "invites": return mes => /(https?:\/\/)?(www\.)?(discord\.(gg|li|me|io)|discordapp\.com\/invite)\/.+/.test(mes.content);
+            case "user": return mes => mes.author.id === user.id;
+            default: return () => true;
+        }
+    }
+
 };
