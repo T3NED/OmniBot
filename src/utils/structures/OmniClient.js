@@ -28,7 +28,7 @@ class OmniClient extends Client {
 
     this.config = config;
     this.fetch = new OmniFetch();
-    this.brawl = new BrawlStars.Client({token: config.brawl_stars_api});
+    this.brawl = new BrawlStars.Client({token: config.brawl_stars_api_token});
     this.music = new Map();
     this.health = Object.seal({
       commands: {
