@@ -18,4 +18,4 @@ new OmniClient({
   },
   readyMessage: client =>
     `Successfully initialized. Ready to serve ${client.guilds.size} guilds.`
-}).login(require("./config").discord_token);
+}).login(config.discord_token);
