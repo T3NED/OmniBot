@@ -5,7 +5,7 @@ module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
 			guarded: true,
-			description: "Returns with your ping"
+			description: 'Returns with your ping',
 		});
 	}
 

@@ -1,5 +1,5 @@
-const { KlasaClient } = require("klasa");
+const { KlasaClient } = require('klasa');
 
 module.exports = KlasaClient.defaultMemberSchema
 
-    .add("warns", "integer", { default: 0});
+	.add('warns', 'integer', { default: 0 });

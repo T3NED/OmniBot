@@ -2,13 +2,14 @@
   "name": "omni",
   "version": "1.0.0",
   "description": "Multifunctional Discord Bot",
-  "main": "src/omni.js",
+  "main": "cd src && omni.js",
+  "scripts": {
+    "test": "eslint ./",
+    "start": "cd src && node omni.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OmniDiscord/OmniBot.git"
-  },
-  "bugs": {
-    "url": "https://github.com/OmniDiscord/OmniBot/issues"
   },
   "keywords": [
     "omnibot",
@@ -20,26 +21,28 @@
   ],
   "author": "Piyush Choubey",
   "license": "MIT",
-  "scripts": {
-    "dev": "node src/omni.js"
+  "bugs": {
+    "url": "https://github.com/OmniDiscord/OmniBot/issues"
   },
+  "homepage": "https://github.com/OmniDiscord/OmniBot#readme",
   "dependencies": {
-    "brawlstars": "^1.2.0",
+    "brawlstars": "^1.2.2",
     "discord.js": "discordjs/discord.js",
-    "eslint": "^5.15.3",
     "ffmpeg-binaries": "^4.0.0",
     "klasa": "dirigeants/klasa",
     "klasa-member-gateway": "dirigeants/klasa-member-gateway",
     "moment": "^2.24.0",
-    "mongodb": "^3.1.13",
-    "opusscript": "^0.0.6",
+    "mongodb": "^3.2.3",
     "os": "^0.1.1",
     "parse-ms": "^2.1.0",
-    "snekfetch": "^4.0.4",
     "yt-search": "^0.4.1",
     "ytdl-core": "^0.29.1"
   },
+  "peerDependencies": {
+    "node-opus": "^0.3.1",
+    "opusscript": "^0.0.6"
+  },
   "devDependencies": {
-    "nodemon": "^1.18.11"
+    "eslint": "^5.16.0"
   }
 }

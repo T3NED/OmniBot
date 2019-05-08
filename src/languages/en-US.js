@@ -70,17 +70,17 @@ module.exports = class extends Language {
 				usersAdded.length ? `**Users Added**\n${util.codeBlock('', usersAdded.join(', '))}` : '',
 				usersRemoved.length ? `**Users Removed**\n${util.codeBlock('', usersRemoved.join(', '))}` : '',
 				guildsAdded.length ? `**Guilds Added**\n${util.codeBlock('', guildsAdded.join(', '))}` : '',
-				guildsRemoved.length ? `**Guilds Removed**\n${util.codeBlock('', guildsRemoved.join(', '))}` : ''
+				guildsRemoved.length ? `**Guilds Removed**\n${util.codeBlock('', guildsRemoved.join(', '))}` : '',
 			].filter(val => val !== '').join('\n'),
 			COMMAND_EVAL_DESCRIPTION: 'Evaluates arbitrary Javascript. Reserved for bot owner.',
 			COMMAND_EVAL_EXTENDEDHELP: [
 				'The eval command evaluates code as-in, any error thrown from it will be handled.',
 				'It also uses the flags feature. Write --silent, --depth=number or --async to customize the output.',
 				'The --silent flag will make it output nothing.',
-				"The --depth flag accepts a number, for example, --depth=2, to customize util.inspect's depth.",
+				'The --depth flag accepts a number, for example, --depth=2, to customize util.inspect\'s depth.',
 				'The --async flag will wrap the code into an async function where you can enjoy the use of await, however, if you want to return something, you will need the return keyword.',
 				'The --showHidden flag will enable the showHidden option in util.inspect.',
-				'If the output is too large, it\'ll send the output as a file, or in the console if the bot does not have the ATTACH_FILES permission.'
+				'If the output is too large, it\'ll send the output as a file, or in the console if the bot does not have the ATTACH_FILES permission.',
 			].join('\n'),
 			COMMAND_EVAL_ERROR: (time, output, type) => `**Error**:${output}\n**Type**:${type}\n${time}`,
 			COMMAND_EVAL_OUTPUT: (time, output, type) => `**Output**:${output}\n**Type**:${type}\n${time}`,
@@ -113,13 +113,13 @@ module.exports = class extends Language {
 				util.codeBlock('', [
 					'The above link is generated requesting the minimum permissions required to use every command currently.',
 					'I know not all permissions are right for every guild, so don\'t be afraid to uncheck any of the boxes.',
-					'If you try to use a command that requires more permissions than the bot is granted, it will let you know.'
+					'If you try to use a command that requires more permissions than the bot is granted, it will let you know.',
 				].join(' ')),
-				'Please file an issue at <https://github.com/dirigeants/klasa> if you find any bugs.'
+				'Please file an issue at <https://github.com/dirigeants/klasa> if you find any bugs.',
 			],
 			COMMAND_INVITE_DESCRIPTION: 'Displays the join guild link of the bot.',
 			COMMAND_INFO: [
-				"Klasa is a 'plug-and-play' framework built on top of the Discord.js library.",
+				'Klasa is a \'plug-and-play\' framework built on top of the Discord.js library.',
 				'Most of the code is modularized, which allows developers to edit Klasa to suit their needs.',
 				'',
 				'Some features of Klasa include:',
@@ -135,7 +135,7 @@ module.exports = class extends Language {
 				'• ⏲ "Tasks", which can be scheduled to run in the future, optionally repeating',
 				'',
 				'We hope to be a 100% customizable framework that can cater to all audiences. We do frequent updates and bugfixes when available.',
-				"If you're interested in us, check us out at https://klasa.js.org"
+				'If you\'re interested in us, check us out at https://klasa.js.org',
 			],
 			COMMAND_INFO_DESCRIPTION: 'Provides some information about this bot.',
 			COMMAND_HELP_DESCRIPTION: 'Display help for a command.',
@@ -173,10 +173,10 @@ module.exports = class extends Language {
 				`• Klasa      :: v${klasaVersion}`,
 				`• Discord.js :: v${discordVersion}`,
 				`• Node.js    :: ${processVersion}`,
-				`• Shard      :: ${(message.guild ? message.guild.shardID : 0) + 1} / ${this.client.options.totalShardCount}`
+				`• Shard      :: ${(message.guild ? message.guild.shardID : 0) + 1} / ${this.client.options.totalShardCount}`,
 			],
 			COMMAND_STATS_DESCRIPTION: 'Provides some details about the bot and stats.',
-			MESSAGE_PROMPT_TIMEOUT: 'The prompt has timed out.'
+			MESSAGE_PROMPT_TIMEOUT: 'The prompt has timed out.',
 		};
 	}
 

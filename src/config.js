@@ -1,0 +1,25 @@
+module.exports = {
+	discord_token: process.env.DISCORD_TOKEN ? process.env.DISCORD_TOKEN : '',
+	brawl_stars_api_token: process.env.BRAWL_STARS_API ? process.env.BRAWL_STARS_API : '',
+	owners: process.env.owners ? process.env.owners.split(',') : [],
+	prefix: process.env.prefix ? process.env.prefix : '',
+	presence: {
+		name: process.env.name ? process.env.name : 'in Developement',
+		type: process.env.type ? process.env.type : 'PLAYING',
+		status: process.env.status ? process.env.status : 'idle',
+	},
+
+	// Channels
+	channels: {
+		support: '',
+	},
+
+	// Database
+	database: {
+		user: process.env.DATABASE_USER ? process.env.DATABASE_USER : '',
+		password: process.env.DATABASE_PASSWORD ? process.env.DATABASE_PASSWORD : '',
+		host: process.env.DATABASE_HOST ? process.env.DATABASE_HOST : '',
+		port: process.env.DATABASE_PORT ? process.env.DATABASE_PORT : 8080,
+		db: process.env.DATABASE_DB_NAME ? process.env.DATABASE_DB_NAME : '',
+	},
+};

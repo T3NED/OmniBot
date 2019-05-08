@@ -8,7 +8,7 @@ module.exports = class extends Event {
 		const botLogs = this.client.channels.get(channels.bot_logs);
 		if (this.client.settings.guildBlacklist.includes(guild.id)) return;
 		botLogs.send(`${this.client.icons.cross} Left [\`${guild.name} (${guild.id})\`] with **${guild.members.filter(m=> !m.user.bot).size}** members and **${guild.members.filter(m=> m.user.bot).size}** bots. (\`${this.client.guilds.size} Guilds\`)`);
-		
+
 	}
 
 };

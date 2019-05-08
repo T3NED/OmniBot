@@ -25,14 +25,15 @@ module.exports = class extends Argument {
 			const regWord = new RegExp(`\\b${regExpEsc(arg)}\\b`, 'i');
 			const filtered = results.filter(role => regWord.test(role.name));
 			querySearch = filtered.length > 0 ? filtered : results;
-		} else {
+		}
+		else {
 			querySearch = results;
 		}
 
 		switch (querySearch.length) {
-			case 0: throw `${possible.name} Must be a valid name, id or role mention`;
-			case 1: return querySearch[0];
-			default: throw `Found multiple matches: \`${querySearch.map(role => role.name).join('`, `')}\``;
+		case 0: throw `${possible.name} Must be a valid name, id or role mention`;
+		case 1: return querySearch[0];
+		default: throw `Found multiple matches: \`${querySearch.map(role => role.name).join('`, `')}\``;
 		}
 	}
 };

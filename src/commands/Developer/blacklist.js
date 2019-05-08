@@ -6,10 +6,10 @@ module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
 			permissionLevel: 10,
-			description: "Blacklists Guild or User",
+			description: 'Blacklists Guild or User',
 			usage: '<User:user|Guild:guild|guild:str> [...]',
 			usageDelim: ' ',
-			guarded: true
+			guarded: true,
 		});
 
 		this.terms = ['usersAdded', 'usersRemoved', 'guildsAdded', 'guildsRemoved'];
@@ -23,7 +23,8 @@ module.exports = class extends Command {
 			const type = userOrGuild instanceof User ? 'user' : 'guild';
 			if (this.client.settings[`${type}Blacklist`].includes(userOrGuild.id || userOrGuild)) {
 				changes[this.terms.indexOf(`${type}sRemoved`)].push(userOrGuild.name || userOrGuild.username || userOrGuild);
-			} else {
+			}
+			else {
 				changes[this.terms.indexOf(`${type}sAdded`)].push(userOrGuild.name || userOrGuild.username || userOrGuild);
 			}
 			queries[Number(type === 'guild')].push(userOrGuild.id || userOrGuild);
@@ -33,9 +34,9 @@ module.exports = class extends Command {
 		if (errors.length) throw String(errors[0]);
 
 		const embed = new MessageEmbed()
-		.setColor("#42f4f1")
-		.setAuthor("Blacklisted")
-		.setDescription(msg.language.get('COMMAND_BLACKLIST_SUCCESS', ...changes));
+			.setColor('#42f4f1')
+			.setAuthor('Blacklisted')
+			.setDescription(msg.language.get('COMMAND_BLACKLIST_SUCCESS', ...changes));
 
 		return msg.send(embed);
 	}

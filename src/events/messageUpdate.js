@@ -7,6 +7,6 @@ module.exports = class extends Event {
 
 		if (!oldMsg.guild || oldMsg.author.bot || oldMsg.content === newMsg.content) return;
 		if (oldMsg.content > 1024 || newMsg.content > 1024) return;
-		this.client.emit("modLogs", oldMsg.guild, "msgUpdate", {name: "message", channel: oldMsg.channel, oldMsg: oldMsg.content, newMsg: newMsg.content}, oldMsg.author);
+		this.client.emit('modLogs', oldMsg.guild, 'msgUpdate', { name: 'message', channel: oldMsg.channel, oldMsg: oldMsg.content, newMsg: newMsg.content }, oldMsg.author);
 	}
 };
