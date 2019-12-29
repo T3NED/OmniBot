@@ -101,7 +101,7 @@ module.exports = {
 	'us-central': ':flag_us: **U.S Central**',
 
 	// Core
-	check: '<:check_green:537574237452369920>',
-	cross: '<:red_cross:537574237267951617>',
+	check: '<:check:660818301596860437>',
+	cross: '<:cross:660818301412442143>',
 
 };

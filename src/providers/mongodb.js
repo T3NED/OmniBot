@@ -15,7 +15,10 @@ module.exports = class extends Provider {
 				host: config.database.host,
 				port: config.database.port,
 				db: config.database.db,
-				options: {},
+				options:
+				{
+					useUnifiedTopology: true,
+				},
 			},
 			this.client.options.providers.mongodb
 		);
