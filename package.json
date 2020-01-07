@@ -27,7 +27,6 @@
   "homepage": "https://github.com/OmniDiscord/OmniBot#readme",
   "dependencies": {
     "discord.js": "discordjs/discord.js",
-    "ffmpeg-binaries": "^4.0.0",
     "klasa": "dirigeants/klasa#master",
     "klasa-member-gateway": "dirigeants/klasa-member-gateway",
     "moment": "^2.24.0",
